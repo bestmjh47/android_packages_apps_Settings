@@ -1034,4 +1034,15 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Settings Group: Halo -->
     <string name="halo_category">HALO</string>
 
+    <!-- **** Transparency ADDITIONS START **** -->
+    <string name="save">Save</string>
+
+    <!-- Transparency -->
+    <string name="interface_title">Interface</string>
+    <string name="transparency_dialog_title">Transparency settings</string>
+    <string name="transparency_dialog_linked_transparency">Link statusbar &amp; navbar alpha</string>
+    <string name="transparency_dialog_transparency_sb_and_nv">Statusbar</string>
+    <string name="transparency_dialog_statusbar">Statusbar</string>
+    <string name="transparency_dialog_transparency">Homescreen alpha</string>
+    <string name="transparency_dialog_transparency_keyguard">Lockscreen alpha</string>
 </resources>

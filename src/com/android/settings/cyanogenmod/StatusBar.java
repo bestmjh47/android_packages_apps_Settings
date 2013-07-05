@@ -17,6 +17,11 @@
 package com.android.settings.cyanogenmod;
 
 import android.content.ContentResolver;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -28,10 +33,17 @@ import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.TextView;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+import com.android.settings.widget.AlphaSeekBar;
 
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
@@ -127,7 +139,132 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             mStatusBarCmSignal.setSummary(mStatusBarCmSignal.getEntries()[index]);
             return true;
         }
+        return false;
+    }
+
+    private void openTransparencyDialog() {
+        getFragmentManager().beginTransaction().add(new AdvancedTransparencyDialog(), null)
+                .commit();
+    }
+
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        boolean value;
+
+        if (preference.getKey().equals("transparency_dialog")) {
+            // getFragmentManager().beginTransaction().add(new
+            // TransparencyDialog(), null).commit();
+            openTransparencyDialog();
+            return true;
+        }
 
         return false;
+    }
+
+    public static class AdvancedTransparencyDialog extends DialogFragment {
+
+        private static final int KEYGUARD_ALPHA = 255;
+
+        private static final int STATUSBAR_ALPHA = 0;
+        private static final int STATUSBAR_KG_ALPHA = 1;
+
+        boolean linkTransparencies = true;
+
+        AlphaSeekBar mSeekBars[] = new AlphaSeekBar[4];
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setShowsDialog(true);
+            setRetainInstance(true);
+            linkTransparencies = getSavedLinkedState();
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            View layout = View.inflate(getActivity(), R.layout.dialog_transparency, null);
+
+            mSeekBars[STATUSBAR_ALPHA] = (AlphaSeekBar) layout.findViewById(R.id.statusbar_alpha);
+            mSeekBars[STATUSBAR_KG_ALPHA] = (AlphaSeekBar) layout
+                    .findViewById(R.id.statusbar_keyguard_alpha);
+            try {
+                // restore any saved settings
+                int alphas[] = new int[2];
+                final String sbConfig = Settings.System.getString(getActivity()
+                        .getContentResolver(),
+                        Settings.System.STATUS_BAR_ALPHA_CONFIG);
+                if (sbConfig != null) {
+                    String split[] = sbConfig.split(";");
+                    alphas[0] = Integer.parseInt(split[0]);
+                    alphas[1] = Integer.parseInt(split[1]);
+
+                    mSeekBars[STATUSBAR_ALPHA].setCurrentAlpha(alphas[0]);
+                    mSeekBars[STATUSBAR_KG_ALPHA].setCurrentAlpha(alphas[1]);
+                }
+            } catch (Exception e) {
+                resetSettings();
+            }
+
+            updateToggleState();
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setView(layout);
+            builder.setTitle(getString(R.string.transparency_dialog_title));
+            builder.setNegativeButton(R.string.cancel, null);
+            builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (linkTransparencies) {
+                        String config = mSeekBars[STATUSBAR_ALPHA].getCurrentAlpha() + ";" +
+                                mSeekBars[STATUSBAR_KG_ALPHA].getCurrentAlpha();
+                        Settings.System.putString(getActivity().getContentResolver(),
+                                Settings.System.STATUS_BAR_ALPHA_CONFIG, config);
+                    } else {
+                        String sbConfig = mSeekBars[STATUSBAR_ALPHA].getCurrentAlpha() + ";" +
+                                mSeekBars[STATUSBAR_KG_ALPHA].getCurrentAlpha();
+                        Settings.System.putString(getActivity().getContentResolver(),
+                                Settings.System.STATUS_BAR_ALPHA_CONFIG, sbConfig);
+                    }
+                }
+            });
+
+            return builder.create();
+        }
+
+        private void resetSettings() {
+            Settings.System.putString(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_ALPHA_CONFIG, null);
+        }
+
+        private void updateToggleState() {
+
+            // disable keyguard alpha if needed
+            if (!mSeekBars[STATUSBAR_KG_ALPHA].isEnabled()) {
+                mSeekBars[STATUSBAR_KG_ALPHA].setCurrentAlpha(KEYGUARD_ALPHA);
+            }
+        }
+
+        @Override
+        public void onDestroyView() {
+            if (getDialog() != null && getRetainInstance())
+                getDialog().setDismissMessage(null);
+            super.onDestroyView();
+        }
+
+        private CompoundButton.OnCheckedChangeListener mUpdateStatesListener = new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                updateToggleState();
+            }
+        };
+
+        private boolean getSavedLinkedState() {
+            return getActivity().getSharedPreferences("transparency", Context.MODE_PRIVATE)
+                    .getBoolean("link", true);
+        }
+
+        private void saveSavedLinkedState(boolean v) {
+            getActivity().getSharedPreferences("transparency", Context.MODE_PRIVATE).edit()
+                    .putBoolean("link", v).commit();
+        }
     }
 }
