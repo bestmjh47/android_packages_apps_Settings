@@ -60,6 +60,12 @@
             android:entryValues="@array/values_status_bar_signal" />
 
         <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="fullscreen_statusbar"
+            android:title="@string/fullscreen_statusbar_title"
+            android:summary="@string/fullscreen_statusbar_summary"
+            android:defaultValue="true" />
+
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
             android:key="status_bar_brightness_control"
             android:title="@string/status_bar_toggle_brightness"
             android:summary="@string/status_bar_toggle_brightness_summary"

@@ -1019,6 +1019,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- GPS download data over wi-fi only -->
     <string name="gps_download_data_wifi_only">Download GPS assisted data only over Wi-Fi networks</string>
 
+    <!-- Fullscreen Status Bar -->
+    <string name="fullscreen_statusbar_title">Fullscreen Statusbar</string>
+    <string name="fullscreen_statusbar_summary">Swiping down from the top of full screen apps shows status bar for 10 seconds.</string>
+
     <!-- HALO -->
     <string name="halo_enabled_title">Enable HALO</string>
     <string name="halo_enabled_summary">Completely enable or disable HALO</string>
