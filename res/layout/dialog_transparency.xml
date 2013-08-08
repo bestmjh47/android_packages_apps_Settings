@@ -10,6 +10,14 @@
         android:padding="16dp" >
 
         <TextView
+            android:id="@+id/navbar_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:text="@string/transparency_dialog_statusbar"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/transparency_dialog_transparency"
@@ -35,5 +43,54 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dip"
             android:layout_marginTop="10dip" />
+
+        <LinearLayout
+            android:id="@+id/navbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="5dip"
+                android:background="#FF545454" />
+
+            <TextView
+                android:id="@+id/navbar_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:text="@string/transparency_dialog_navbar"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transparency_dialog_transparency"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <com.android.settings.widget.AlphaSeekBar
+                android:id="@+id/navbar_alpha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip" />
+
+            <TextView
+                android:id="@+id/navbar_label_keyguard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/transparency_dialog_transparency_keyguard"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <com.android.settings.widget.AlphaSeekBar
+                android:id="@+id/navbar_keyguard_alpha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:layout_marginTop="10dip" />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

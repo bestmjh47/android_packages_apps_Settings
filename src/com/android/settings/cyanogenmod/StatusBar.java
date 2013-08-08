@@ -178,8 +178,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
         private static final int STATUSBAR_ALPHA = 0;
         private static final int STATUSBAR_KG_ALPHA = 1;
+        private static final int NAVBAR_ALPHA = 2;
+        private static final int NAVBAR_KG_ALPHA = 3;
 
-        boolean linkTransparencies = true;
+        ViewGroup mNavigationBarGroup;
 
         AlphaSeekBar mSeekBars[] = new AlphaSeekBar[4];
 
@@ -188,16 +190,20 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             super.onCreate(savedInstanceState);
             setShowsDialog(true);
             setRetainInstance(true);
-            linkTransparencies = getSavedLinkedState();
         }
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             View layout = View.inflate(getActivity(), R.layout.dialog_transparency, null);
 
+            mNavigationBarGroup = (ViewGroup) layout.findViewById(R.id.navbar_layout);
             mSeekBars[STATUSBAR_ALPHA] = (AlphaSeekBar) layout.findViewById(R.id.statusbar_alpha);
             mSeekBars[STATUSBAR_KG_ALPHA] = (AlphaSeekBar) layout
                     .findViewById(R.id.statusbar_keyguard_alpha);
+            mSeekBars[NAVBAR_ALPHA] = (AlphaSeekBar) layout.findViewById(R.id.navbar_alpha);
+            mSeekBars[NAVBAR_KG_ALPHA] = (AlphaSeekBar) layout
+                    .findViewById(R.id.navbar_keyguard_alpha);
+
             try {
                 // restore any saved settings
                 int alphas[] = new int[2];
@@ -211,12 +217,22 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
                     mSeekBars[STATUSBAR_ALPHA].setCurrentAlpha(alphas[0]);
                     mSeekBars[STATUSBAR_KG_ALPHA].setCurrentAlpha(alphas[1]);
-                }
+
+                        final String navConfig = Settings.System.getString(getActivity()
+                                .getContentResolver(),
+                                Settings.System.NAVIGATION_BAR_ALPHA_CONFIG);
+                        if (navConfig != null) {
+                            split = navConfig.split(";");
+                            alphas[0] = Integer.parseInt(split[0]);
+                            alphas[1] = Integer.parseInt(split[1]);
+                            mSeekBars[NAVBAR_ALPHA].setCurrentAlpha(alphas[0]);
+                            mSeekBars[NAVBAR_KG_ALPHA].setCurrentAlpha(alphas[1]);
+                        }
+                    }
             } catch (Exception e) {
                 resetSettings();
             }
 
-            updateToggleState();
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setView(layout);
             builder.setTitle(getString(R.string.transparency_dialog_title));
@@ -225,17 +241,15 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    if (linkTransparencies) {
-                        String config = mSeekBars[STATUSBAR_ALPHA].getCurrentAlpha() + ";" +
-                                mSeekBars[STATUSBAR_KG_ALPHA].getCurrentAlpha();
-                        Settings.System.putString(getActivity().getContentResolver(),
-                                Settings.System.STATUS_BAR_ALPHA_CONFIG, config);
-                    } else {
                         String sbConfig = mSeekBars[STATUSBAR_ALPHA].getCurrentAlpha() + ";" +
                                 mSeekBars[STATUSBAR_KG_ALPHA].getCurrentAlpha();
                         Settings.System.putString(getActivity().getContentResolver(),
                                 Settings.System.STATUS_BAR_ALPHA_CONFIG, sbConfig);
-                    }
+
+                        String nbConfig = mSeekBars[NAVBAR_ALPHA].getCurrentAlpha() + ";" +
+                                mSeekBars[NAVBAR_KG_ALPHA].getCurrentAlpha();
+                        Settings.System.putString(getActivity().getContentResolver(),
+                                Settings.System.NAVIGATION_BAR_ALPHA_CONFIG, nbConfig);
                 }
             });
 
@@ -245,14 +259,8 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         private void resetSettings() {
             Settings.System.putString(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_ALPHA_CONFIG, null);
-        }
-
-        private void updateToggleState() {
-
-            // disable keyguard alpha if needed
-            if (!mSeekBars[STATUSBAR_KG_ALPHA].isEnabled()) {
-                mSeekBars[STATUSBAR_KG_ALPHA].setCurrentAlpha(KEYGUARD_ALPHA);
-            }
+            Settings.System.putString(getActivity().getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_ALPHA_CONFIG, null);
         }
 
         @Override
@@ -261,13 +269,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 getDialog().setDismissMessage(null);
             super.onDestroyView();
         }
-
-        private CompoundButton.OnCheckedChangeListener mUpdateStatesListener = new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                updateToggleState();
-            }
-        };
 
         private boolean getSavedLinkedState() {
             return getActivity().getSharedPreferences("transparency", Context.MODE_PRIVATE)
