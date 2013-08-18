@@ -58,9 +58,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private ListPreference mStatusBarAmPm;
     private ListPreference mStatusBarBattery;
     private ListPreference mStatusBarCmSignal;
-
-    private CheckBoxPreference mStatusBarClock;
-    private CheckBoxPreference mStatusBarAutoHide;
+    private ListPreference mStatusBarAutoHide;
     ListPreference mFullScreenStatusBarTimeout;
 
     @Override
@@ -97,9 +95,12 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         CheckBoxPreference statusBarBrightnessControl = (CheckBoxPreference)
                 prefSet.findPreference(Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL);
 
-        mStatusBarAutoHide = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_AUTO_HIDE);
-        mStatusBarAutoHide.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.AUTO_HIDE_STATUSBAR, 0) == 1));
+        mStatusBarAutoHide = (ListPreference) prefSet.findPreference(STATUS_BAR_AUTO_HIDE);
+        int statusBarAutoHideValue = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.AUTO_HIDE_STATUSBAR, 0);
+        mStatusBarAutoHide.setValue(String.valueOf(statusBarAutoHideValue));
+        updateStatusBarAutoHideSummary(statusBarAutoHideValue);
+        mStatusBarAutoHide.setOnPreferenceChangeListener(this);
 
         try {
             if (Settings.System.getInt(resolver, Settings.System.SCREEN_BRIGHTNESS_MODE)
@@ -157,6 +158,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             int val = Integer.parseInt((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.FULLSCREEN_STATUSBAR_TIMEOUT, val);
+        } else if (preference == mStatusBarAutoHide) {
+            int statusBarAutoHideValue = Integer.valueOf((String) newValue);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.AUTO_HIDE_STATUSBAR, statusBarAutoHideValue);
+            updateStatusBarAutoHideSummary(statusBarAutoHideValue);
             return true;
         }
         return false;
@@ -174,13 +180,20 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             // TransparencyDialog(), null).commit();
             openTransparencyDialog();
             return true;
-        } else if (preference == mStatusBarAutoHide) {
-            value = mStatusBarAutoHide.isChecked();
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.AUTO_HIDE_STATUSBAR, value ? 1 : 0);
         }
 
         return false;
+    }
+
+    private void updateStatusBarAutoHideSummary(int value) {
+        if (value == 0) {
+            /* StatusBar AutoHide deactivated */
+            mStatusBarAutoHide.setSummary(getResources().getString(R.string.auto_hide_statusbar_off));
+        } else {
+            mStatusBarAutoHide.setSummary(getResources().getString(value == 1
+                    ? R.string.auto_hide_statusbar_summary_nonperm
+                    : R.string.auto_hide_statusbar_summary_all));
+        }
     }
 
     public static class AdvancedTransparencyDialog extends DialogFragment {
