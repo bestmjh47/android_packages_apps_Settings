@@ -1115,4 +1115,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="title_floating_window">Floating window</string>
     <string name="summary_floating_window">Open Quick Settings tiles in floating window</string>
 
+    <!-- OnClick Fliptile animation -->
+    <string name="flip_qs_tiles_title">Flip tiles</string>
+    <string name="flip_qs_tiles_summary">Flips the tiles on touch</string>
+
 </resources>
