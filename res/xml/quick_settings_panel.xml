@@ -40,6 +40,12 @@
             android:defaultValue="false"
             android:summary="@string/summary_qs_small_icons" />
 
+	<com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="quick_settings_tiles_flip"
+            android:title="@string/flip_qs_tiles_title"
+            android:summary="@string/flip_qs_tiles_summary"
+            android:defaultValue="true" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

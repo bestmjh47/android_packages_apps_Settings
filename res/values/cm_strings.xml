@@ -1359,4 +1359,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="set">Set</string>
     <string name="hex">Hex:</string>
     <string name="color_default">Default</string>
+
+    <!-- OnClick Fliptile animation -->
+    <string name="flip_qs_tiles_title">Flip tiles</string>
+    <string name="flip_qs_tiles_summary">Flips the tiles on touch</string>
 </resources>
