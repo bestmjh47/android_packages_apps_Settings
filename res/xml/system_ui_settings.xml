@@ -57,6 +57,11 @@ limitations under the License.
         android:fragment="com.android.settings.cyanogenmod.Halo"
         android:title="@string/halo_category" />
 
+    <PreferenceScreen
+        android:key="listview"
+        android:fragment="com.android.settings.cyanogenmod.Listview"
+        android:title="@string/listview_category" />
+
     <PreferenceCategory
         android:key="navigation_bar"
         android:title="@string/navigation_bar_category" >
