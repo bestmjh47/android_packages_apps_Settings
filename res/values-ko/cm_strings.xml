@@ -981,4 +981,7 @@
 
   <!-- Recent App Panel -->
   <string name="recent_panel_title">최근 앱</string>
+
+  <!-- ListView animation -->
+  <string name="listview_category">리스트뷰 애니메이션</string>
 </resources>
