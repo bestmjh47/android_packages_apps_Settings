@@ -37,7 +37,6 @@ public class AppSidebar extends SettingsPreferenceFragment implements
     private static final String KEY_TRANSPARENCY = "sidebar_transparency";
     private static final String KEY_SETUP_ITEMS = "sidebar_setup_items";
     private static final String KEY_POSITION = "sidebar_position";
-    private static final String KEY_HIDE_LABELS = "sidebar_hide_labels";
     private static final String KEY_TRIGGER_WIDTH = "trigger_width";
     private static final String KEY_TRIGGER_TOP = "trigger_top";
     private static final String KEY_TRIGGER_BOTTOM = "trigger_bottom";
@@ -45,7 +44,6 @@ public class AppSidebar extends SettingsPreferenceFragment implements
     private SwitchPreference mEnabledPref;
     private SeekBarPreference mTransparencyPref;
     private ListPreference mPositionPref;
-    private CheckBoxPreference mHideLabelsPref;
     private SeekBarPreference mTriggerWidthPref;
     private SeekBarPreference mTriggerTopPref;
     private SeekBarPreference mTriggerBottomPref;
@@ -60,10 +58,6 @@ public class AppSidebar extends SettingsPreferenceFragment implements
         mEnabledPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.APP_SIDEBAR_ENABLED, 0) == 1));
         mEnabledPref.setOnPreferenceChangeListener(this);
-
-        mHideLabelsPref = (CheckBoxPreference) findPreference(KEY_HIDE_LABELS);
-        mHideLabelsPref.setChecked((Settings.System.getInt(getContentResolver(),
-                Settings.System.APP_SIDEBAR_DISABLE_LABELS, 0) == 1));
 
         PreferenceScreen prefSet = getPreferenceScreen();
         mPositionPref = (ListPreference) prefSet.findPreference(KEY_POSITION);
@@ -128,22 +122,6 @@ public class AppSidebar extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
-    }
-
-    @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        boolean value;
-
-        if (preference == mHideLabelsPref) {
-            value = mHideLabelsPref.isChecked();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.APP_SIDEBAR_DISABLE_LABELS,
-                    value ? 1 : 0);
-        } else {
-            return super.onPreferenceTreeClick(preferenceScreen, preference);
-        }
-
-        return true;
     }
 
     @Override

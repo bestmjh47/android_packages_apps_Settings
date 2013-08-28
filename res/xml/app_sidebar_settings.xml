@@ -41,8 +41,8 @@
         android:defaultValue="0"
         android:dependency="sidebar_enable" />
 
-    <CheckBoxPreference
-        android:key="sidebar_hide_labels"
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="app_sidebar_disable_labels"
         android:title="@string/app_sidebar_hide_labels_title"
         android:summary="@string/app_sidebar_hide_labels_summary"
         android:defaultValue="false"
