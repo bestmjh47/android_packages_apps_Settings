@@ -73,13 +73,6 @@
             android:summary="@string/fullscreen_statusbar_timeout_summary"
             android:dependency="fullscreen_statusbar" />
 
-        <ListPreference
-            android:key="status_bar_auto_hide"
-            android:title="@string/auto_hide_statusbar"
-            android:entries="@array/entries_auto_hide_statusbar"
-            android:entryValues="@array/values_auto_hide_statusbar"
-            android:persistent="false" />
-
         <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
             android:key="status_bar_brightness_control"
             android:title="@string/status_bar_toggle_brightness"
