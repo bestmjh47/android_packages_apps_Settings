@@ -19,7 +19,7 @@ public class AlphaSeekBar extends LinearLayout implements OnSeekBarChangeListene
     private static final String ALPHA = "alpha";
 
     private static final int MAX_VALUE = 255;
-    int defaultValue = 255;
+    int defaultValue = 112;
 
     private TextView mAlphaText;
     private TextView mPercentText;

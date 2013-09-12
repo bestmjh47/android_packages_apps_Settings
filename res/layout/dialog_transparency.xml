@@ -9,12 +9,28 @@
         android:orientation="vertical"
         android:padding="16dp" >
 
+        <CheckBox
+            android:id="@+id/transparency_linked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:checked="true"
+            android:text="@string/transparency_dialog_linked_transparency"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dip"
+            android:layout_marginTop="5dip"
+            android:background="#FF545454" />
+
         <TextView
-            android:id="@+id/navbar_label"
+            android:id="@+id/statusbar_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dip"
-            android:text="@string/transparency_dialog_statusbar"
+            android:text="@string/transparency_dialog_transparency_keyguard"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
@@ -43,6 +59,15 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dip"
             android:layout_marginTop="10dip" />
+
+        <CheckBox
+            android:id="@+id/statusbar_match_keyguard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dip"
+            android:checked="true"
+            android:text="@string/transparency_dialog_match_keyguard_alpha"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <LinearLayout
             android:id="@+id/navbar_layout"
@@ -91,6 +116,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dip"
                 android:layout_marginTop="10dip" />
+
+            <CheckBox
+                android:id="@+id/navbar_match_keyguard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dip"
+                android:checked="true"
+                android:text="@string/transparency_dialog_match_keyguard_alpha"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
     </LinearLayout>
+
 </ScrollView>
