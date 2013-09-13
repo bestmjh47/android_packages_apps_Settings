@@ -37,12 +37,53 @@
             android:dependency="halo_enabled"
             android:entryValues="@array/values_halo_state" />
 
+        <ListPreference
+            android:key="halo_size"
+            android:dialogTitle="@string/halo_size_title"
+            android:title="@string/halo_size_title"
+            android:summary="@string/halo_size_summary"
+            android:entries="@array/entries_halo_size"
+            android:dependency="halo_enabled"
+            android:entryValues="@array/values_halo_size" />
+
         <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
             android:key="halo_hide"
             android:title="@string/halo_hide_title"
             android:summary="@string/halo_hide_summary"
             android:dependency="halo_enabled"
             android:defaultValue="false" />
+
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="halo_ninja"
+            android:title="@string/halo_ninja_title"
+            android:summary="@string/halo_ninja_summary"
+            android:dependency="halo_enabled"
+            android:defaultValue="false" />
+
+        <ListPreference
+            android:key="halo_notify_count"
+            android:dialogTitle="@string/halo_notification_count_title"
+            android:title="@string/halo_notification_count_title"
+            android:summary="@string/halo_notification_count_summary"
+            android:dependency="halo_enabled"
+            android:entries="@array/entries_halo_notification_count"
+            android:entryValues="@array/values_halo_notification_count" />
+
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="halo_msgbox"
+            android:title="@string/halo_notification_msgbox_title"
+            android:summary="@string/halo_notification_msgbox_summary"
+            android:dependency="halo_enabled"
+            android:defaultValue="true" />
+
+        <ListPreference
+            android:key="halo_msgbox_animation"
+            android:dialogTitle="@string/halo_msgbox_animation_title"
+            android:title="@string/halo_msgbox_animation_title"
+            android:summary="@string/halo_msgbox_animation_summary"
+            android:dependency="halo_enabled"
+            android:entries="@array/entries_halo_msgbox_animation"
+            android:entryValues="@array/values_halo_msgbox_animation" />
 
         <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
             android:key="halo_reversed"
@@ -57,13 +98,12 @@
             android:dependency="halo_enabled"
             android:summary="@string/halo_pause_summary" />
 
-        <ListPreference
-            android:key="halo_size"
-            android:dialogTitle="@string/halo_size_title"
-            android:title="@string/halo_size_title"
-            android:summary="@string/halo_size_summary"
-            android:entries="@array/entries_halo_size"
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="halo_unlock_ping"
+            android:title="@string/halo_unlock_ping_title"
+            android:summary="@string/halo_unlock_ping_summary"
             android:dependency="halo_enabled"
-            android:entryValues="@array/values_halo_size" />
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 </PreferenceScreen>
