@@ -1125,6 +1125,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="trigger_bottom_title">Trigger height</string>
     <string name="trigger_bottom_summary">Adjust the height of the trigger area</string>
 
+    <!-- Center Clock -->
+    <string name="status_bar_center_clock_title">Center clock</string>
+
     <!-- Quicksettings panel floating window -->
     <string name="title_floating_window">Floating window</string>
     <string name="summary_floating_window">Open Quick Settings tiles in floating window</string>
