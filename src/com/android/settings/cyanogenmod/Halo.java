@@ -28,6 +28,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceClickListener;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 
@@ -38,11 +39,14 @@ import com.android.settings.Utils;
 public class Halo extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
+    private static final String KEY_HALO_ENABLED = "halo_enabled";
     private static final String KEY_HALO_STATE = "halo_state";
     private static final String KEY_HALO_PAUSE = "halo_pause";
     private static final String KEY_HALO_SIZE = "halo_size";
     private static final String KEY_HALO_MSGBOX_ANIMATION = "halo_msgbox_animation";
     private static final String KEY_HALO_NOTIFY_COUNT = "halo_notify_count";
+
+    private SwitchPreference mHaloEnabled;
 
     private ListPreference mHaloState;
     private ListPreference mHaloSize;
@@ -64,6 +68,11 @@ public class Halo extends SettingsPreferenceFragment
 
         mNotificationManager = INotificationManager.Stub.asInterface(
                 ServiceManager.getService(Context.NOTIFICATION_SERVICE));
+
+        mHaloEnabled = (SwitchPreference) findPreference(KEY_HALO_ENABLED);
+        mHaloEnabled.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.HALO_ENABLED, 0) == 1);
+        mHaloEnabled.setOnPreferenceChangeListener(this);
 
         mHaloState = (ListPreference) prefSet.findPreference(KEY_HALO_STATE);
         mHaloState.setValue(String.valueOf((isHaloPolicyBlack() ? "1" : "0")));
@@ -147,6 +156,12 @@ public class Halo extends SettingsPreferenceFragment
             int haloNotifyCount = Integer.valueOf((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.HALO_NOTIFY_COUNT, haloNotifyCount);
+            return true;
+        } else if  (preference == mHaloEnabled) {
+            boolean HaloEnabled = ((Boolean)newValue).booleanValue();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.HALO_ENABLED, HaloEnabled
+                    ? 1 : 0);
             return true;
         }
         return false;

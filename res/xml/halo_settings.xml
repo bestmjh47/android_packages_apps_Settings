@@ -18,14 +18,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/halo_category"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-    <PreferenceCategory
-        android:key="halo_category"
-        android:title="@string/halo_category" >
 
-        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        <SwitchPreference
             android:key="halo_enabled"
             android:title="@string/halo_enabled_title"
-            android:summary="@string/halo_enabled_summary"
+            android:summaryOn="@string/halo_enabled_summaryOn"
+            android:summaryOff="@string/halo_enabled_summaryOff"
             android:defaultValue="false" />
 
         <ListPreference
@@ -105,5 +103,4 @@
             android:dependency="halo_enabled"
             android:defaultValue="false" />
 
-    </PreferenceCategory>
 </PreferenceScreen>

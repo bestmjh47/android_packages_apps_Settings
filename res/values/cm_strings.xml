@@ -1034,7 +1034,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- HALO -->
     <string name="halo_behavior_title">HALO Behavior</string>
     <string name="halo_enabled_title">Enable HALO</string>
-    <string name="halo_enabled_summary">Completely enable or disable HALO</string>
+    <string name="halo_enabled_summaryOn">HALO is enabled</string>
+    <string name="halo_enabled_summaryOff">HALO is disabled</string>
     <string name="halo_hide_title">Hide HALO after activity</string>
     <string name="halo_hide_summary">HALO will appear for incoming tasks and scroll out of sight after a while</string>
     <string name="halo_reversed_title">Reverse HALO gestures</string>
@@ -1097,7 +1098,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- App sidebar -->
     <string name="app_sidebar_title">Appbar</string>
     <string name="app_sidebar_enable_title">Enable Appbar</string>
-    <string name="app_sidebar_summary">Customize your app sidebar</string>
     <string name="app_sidebar_enable_summaryOn">\@appbar is enabled</string>
     <string name="app_sidebar_enable_summaryOff">\@appbar is disabled</string>
     <string name="app_sidebar_setup_items_title">Setup Appbar content</string>
