@@ -33,7 +33,7 @@ import static android.hardware.Sensor.TYPE_PROXIMITY;
 
 public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
-    private static final String TAG = "PornSettings";
+    private static final String TAG = "ActiveDisplaySettings";
 
     private static final String KEY_ENABLED = "ad_enable";
     private static final String KEY_POCKET_MODE = "ad_pocket_mode";
