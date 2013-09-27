@@ -40,12 +40,14 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_POCKET_MODE = "ad_pocket_mode";
     private static final String KEY_SUNLIGHT_MODE = "ad_sunlight_mode";
     private static final String KEY_REDISPLAY = "ad_redisplay";
+    private static final String KEY_TIMEOUT = "ad_timeout";
     private static final String KEY_BRIGHTNESS = "ad_brightness";
 
     private SwitchPreference mEnabledPref;
     private CheckBoxPreference mPocketModePref;
     private CheckBoxPreference mSunlightModePref;
     private ListPreference mRedisplayPref;
+    private ListPreference mDisplayTimeout;
     private SeekBarPreference mBrightnessLevel;
 
     @Override
@@ -81,6 +83,13 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
         mRedisplayPref.setValue(String.valueOf(timeout));
         updateRedisplaySummary(timeout);
 
+        mDisplayTimeout = (ListPreference) prefSet.findPreference(KEY_TIMEOUT);
+        mDisplayTimeout.setOnPreferenceChangeListener(this);
+        timeout = Settings.System.getLong(getContentResolver(),
+                Settings.System.ACTIVE_DISPLAY_TIMEOUT, 8000L);
+        mDisplayTimeout.setValue(String.valueOf(timeout));
+        updateTimeoutSummary(timeout);
+
         mBrightnessLevel = (SeekBarPreference) findPreference(KEY_BRIGHTNESS);
         mBrightnessLevel.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.ACTIVE_DISPLAY_BRIGHTNESS, 100));
@@ -111,6 +120,10 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
                     Settings.System.ENABLE_ACTIVE_DISPLAY,
                     ((Boolean) newValue).booleanValue() ? 1 : 0);
             return true;
+        } else if (preference == mDisplayTimeout) {
+            long timeout = Integer.valueOf((String) newValue);
+            updateTimeoutSummary(timeout);
+            return true;
         } else if (preference == mBrightnessLevel) {
             int brightness = ((Integer)newValue).intValue();
             Settings.System.putInt(getContentResolver(),
@@ -124,6 +137,15 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
         mRedisplayPref.setSummary(mRedisplayPref.getEntries()[mRedisplayPref.findIndexOfValue("" + value)]);
         Settings.System.putLong(getContentResolver(),
                 Settings.System.ACTIVE_DISPLAY_REDISPLAY, value);
+    }
+
+     private void updateTimeoutSummary(long value) {
+        try {
+            mDisplayTimeout.setSummary(mDisplayTimeout.getEntries()[mDisplayTimeout.findIndexOfValue("" + value)]);
+            Settings.System.putLong(getContentResolver(),
+                    Settings.System.ACTIVE_DISPLAY_TIMEOUT, value);
+        } catch (ArrayIndexOutOfBoundsException e) {
+        }
     }
 
     private boolean hasProximitySensor() {
