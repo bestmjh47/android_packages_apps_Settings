@@ -31,6 +31,12 @@
         android:dependency="ad_enable"/>
 
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="active_display_hide_low_priority_notifications"
+        android:title="@string/ad_hide_low_priority_title"
+        android:summary="@string/ad_hide_low_priority_summary"
+        android:dependency="ad_enable"/>
+
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
         android:key="active_display_all_notifications"
         android:title="@string/ad_all_notifications_title"
         android:summary="@string/ad_all_notifications_summary"
