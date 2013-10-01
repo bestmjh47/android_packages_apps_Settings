@@ -1099,6 +1099,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- App sidebar -->
     <string name="app_sidebar_title">Appbar</string>
     <string name="app_sidebar_enable_title">Enable Appbar</string>
+    <string name="app_sidebar_summary">Customize your app sidebar</string>
     <string name="app_sidebar_enable_summaryOn">\@appbar is enabled</string>
     <string name="app_sidebar_enable_summaryOff">\@appbar is disabled</string>
     <string name="app_sidebar_setup_items_title">Setup Appbar content</string>

@@ -35,9 +35,15 @@ limitations under the License.
         android:title="@string/notification_drawer_title" />
 
     <PreferenceScreen
+        android:key="halo"
+        android:fragment="com.android.settings.cyanogenmod.Halo"
+        android:title="@string/halo_category" />
+
+    <PreferenceScreen
         android:key="app_sidebar"
         android:fragment="com.android.settings.cyanogenmod.AppSidebar"
-        android:title="@string/app_sidebar_title" />
+        android:title="@string/app_sidebar_title"
+        android:summary="@string/app_sidebar_summary" />
 
     <PreferenceScreen
         android:key="active_display"
