@@ -51,10 +51,12 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
     private static final String KEY_EXPANDED_DESKTOP_NO_NAVBAR = "expanded_desktop_no_navbar";
     private static final String CATEGORY_NAVBAR = "navigation_bar";
     private static final String KEY_PIE_CONTROL = "pie_control";
+    private static final String KEY_RECENTS_RAM_BAR = "recents_ram_bar";
 
     private PreferenceScreen mPieControl;
     private ListPreference mExpandedDesktopPref;
     private CheckBoxPreference mExpandedDesktopNoNavbarPref;
+    private Preference mRamBar;
 
     private static ContentResolver mContentResolver;
 
@@ -99,12 +101,31 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
         } catch (RemoteException e) {
             Log.e(TAG, "Error getting navigation bar status");
         }
+
+        mRamBar = findPreference(KEY_RECENTS_RAM_BAR);
+        updateRamBar();
     }
 
     @Override
     public void onResume() {
         super.onResume();
         updatePieControlSummary();
+        updateRamBar();
+    }
+
+    @Override
+    public void onPause() {
+        super.onResume();
+        updateRamBar();
+    }
+
+    private void updateRamBar() {
+        int ramBarMode = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.RECENTS_RAM_BAR_MODE, 0);
+        if (ramBarMode != 0)
+            mRamBar.setSummary(getResources().getString(R.string.ram_bar_color_enabled));
+        else
+            mRamBar.setSummary(getResources().getString(R.string.ram_bar_color_disabled));
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
