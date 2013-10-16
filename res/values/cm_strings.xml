@@ -740,6 +740,9 @@
     <string name="stylus_icon_enabled_title">Show icon when using stylus</string>
     <string name="stylus_icon_enabled_summary">Show the pointer icon when hovering or drawing with the stylus</string>
 
+    <!-- Lockscreen Ring Battery -->
+    <string name="battery_around_lockscreen_ring">Battery level around lock ring</string>
+
     <!-- Lock screen widgets -->
     <string name="lockscreen_widgets_category_title">Widgets</string>
     <string name="lockscreen_maximize_widgets_title">Maximize widgets</string>

@@ -674,4 +674,5 @@
     <string name="ram_bar_color_disabled">사용 안함</string>
     <string name="ram_bar_button_help">도움말</string>
     <string name="ram_bar_button_reset">색상 초기화</string>
+    <string name="battery_around_lockscreen_ring">잠금 링 주위에 배터리 표시</string>
 </resources>
