@@ -1099,6 +1099,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="transparency_dialog_match_keyguard_alpha">Match lockscreen alpha</string>
     <string name="transparency_dialog_transparency">Homescreen alpha</string>
     <string name="transparency_dialog_transparency_keyguard">Lockscreen alpha</string>
+    <string name="transparency_dialog_lockscreen">Lockscreen</string>
 
     <!-- Sound settings screen, setting check box label -->
     <string name="camera_sounds_title">Camera shutter sound</string>

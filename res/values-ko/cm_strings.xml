@@ -488,9 +488,10 @@
     <string name="transparency_dialog_transparency_sb_and_nv">상태바 &amp; 네비게이션바</string>
     <string name="transparency_dialog_statusbar">상태바</string>
     <string name="transparency_dialog_navbar">네비게이션바</string>
-    <string name="transparency_dialog_match_keyguard_alpha">잠금화면 투명도 일치</string>
+    <string name="transparency_dialog_match_keyguard_alpha">잠금 화면 투명도 일치</string>
     <string name="transparency_dialog_transparency">홈 화면 투명도</string>
     <string name="transparency_dialog_transparency_keyguard">잠금 화면 투명도</string>
+    <string name="transparency_dialog_lockscreen">잠금 화면</string>
     <string name="power_notifications_category_title">충전음</string>
     <string name="power_notifications_enable_title">활성화</string>
     <string name="power_notifications_enable_summary">충전기를 연결하거나 분리할 때 소리 재생</string>
