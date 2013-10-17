@@ -623,6 +623,8 @@
     <string name="ad_customizations_title">커스터마이징</string>
     <string name="ad_brightness_title">알림 밝기</string>
     <string name="ad_brightness_summary">자동 밝기가 활성화 되지 않았을 경우의 밝기</string>
+    <string name="ad_excluded_apps_title">차단된 앱</string>
+    <string name="ad_excluded_apps_summary">차단된 앱은 active display에 표시되지 않습니다.</string>
     <string name="ad_show_date_title">날짜 표시</string>
     <string name="ad_show_date_summary">시계 위에 날짜를 표시합니다.</string>
     <string name="ad_show_ampm_title">오전/오후 표시</string>
