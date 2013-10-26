@@ -604,7 +604,7 @@
     <string name="halo_msgbox_animation_summary">HALO에 오는 알림의 박스 애니메이션</string>
     <string name="halo_msgbox_animation_none">없음</string>
     <string name="halo_msgbox_animation_flip">뒤집기</string>
-    <string name="listview_category">리스트뷰</string>
+    <string name="listview_category">리스트뷰 애니메이션</string>
     <string name="app_sidebar_title">앱 사이드바</string>
     <string name="app_sidebar_enable_title">Appbar 활성화</string>
     <string name="app_sidebar_summary">앱 사이드바 설정 변경</string>

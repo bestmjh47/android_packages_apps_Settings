@@ -1141,7 +1141,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="flip_qs_tiles_summary">Flips the tiles on touch</string>
 
     <!-- ListView animation -->
-    <string name="listview_category">ListView</string>
+    <string name="listview_category">ListView Animation</string>
     <string name="listview_animation_title">ListView Animation</string>
     <string name="listview_off">Off</string>
     <string name="listview_wave_left">Wave (Left)</string>
