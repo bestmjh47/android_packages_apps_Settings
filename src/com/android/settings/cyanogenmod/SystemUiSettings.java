@@ -148,8 +148,7 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        boolean value;
-            if (preference.getKey().equals("transparency_dialog")) {
+        if (preference.getKey().equals("transparency_dialog")) {
             openTransparencyDialog();
             return true;
         }
