@@ -566,6 +566,8 @@
     <string name="vibrator_warning">%1$d 이상의 값은 권장하지 않습니다.</string>
     <string name="accessibility_home_button_answers_call_prerefence_title">홈 버튼으로 전화 받기</string>
     <string name="gps_download_data_wifi_only">Wi-Fi로만 GPS 보조 데이터 다운</string>
+
+    <!-- HALO -->
     <string name="halo_behavior_title">HALO 행동</string>
     <string name="halo_enabled_title">HALO 활성화</string>
     <string name="halo_enabled_summaryOn">HALO가 활성화됨</string>
@@ -604,7 +606,11 @@
     <string name="halo_msgbox_animation_summary">HALO에 오는 알림의 박스 애니메이션</string>
     <string name="halo_msgbox_animation_none">없음</string>
     <string name="halo_msgbox_animation_flip">뒤집기</string>
+
+    <!-- ListView animation -->
     <string name="listview_category">리스트뷰 애니메이션</string>
+
+    <!-- App sidebar -->
     <string name="app_sidebar_title">앱 사이드바</string>
     <string name="app_sidebar_enable_title">Appbar 활성화</string>
     <string name="app_sidebar_summary">앱 사이드바 설정 변경</string>
@@ -627,10 +633,14 @@
     <string name="trigger_top_summary">트리거 영역의 위치를 조정합니다.</string>
     <string name="trigger_bottom_title">트리거 높이</string>
     <string name="trigger_bottom_summary">트리거 영역의 높이를 조정합니다.</string>
+
+    <!-- Animation Controls -->
     <string name="title_animation_controls">시스템 애니메이션</string>
     <string name="animation_duration_title">애니메이션 길이</string>
     <string name="summary_animation_no_override">앱이 화면 전환 효과를 무시하는것을 방지합니다.</string>
     <string name="animation_duration_default">기본 값</string>
+
+    <!-- Recents Ram Bar -->
     <string name="ram_bar_note_title">참고</string>
     <string name="ram_bar_note_summary">이 RAM bar는 실제 안드로이드 메모리 (RAM) 사용율을 보여줍니다. 캐시된 앱들은 장치에서 앱들을 여는 것을 빠르게 한다는 것을 참고하시길 바랍니다. 안드로이드의 메모리 (RAM) 관리가 어떻게 작동하는지에 대한 자세한 설명은 도움말 메뉴를 확인하시길 바랍니다.</string>
     <string name="ram_bar_color_enabled">사용</string>

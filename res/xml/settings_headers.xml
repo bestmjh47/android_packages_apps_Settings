@@ -93,6 +93,20 @@
         android:fragment="com.android.settings.cyanogenmod.SystemUiSettings"
         android:title="@string/system_settings_title" />
 
+    <!-- Screen state service -->
+    <header
+        android:id="@+id/screen_state_service"
+        android:fragment="com.android.settings.cyanogenmod.ScreenStateToggles"
+        android:icon="@drawable/ic_screen_state"
+        android:title="@string/screen_state_toggles_title" />
+
+    <!-- Wakelock blocker -->
+    <header
+        android:id="@+id/wakelock_blocker"
+        android:fragment="com.android.settings.cyanogenmod.WakeLockBlocker"
+        android:icon="@drawable/ic_wakelock_blocker"
+        android:title="@string/wakelock_blocker" />
+
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
         android:title="@string/header_category_device" />

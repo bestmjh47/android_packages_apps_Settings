@@ -1757,6 +1757,22 @@
         <activity android:name=".cyanogenmod.MoreDeviceSettings" />
 
         <activity
+            android:name=".cyanogenmod.ScreenStateToggles"
+            android:label="@string/screen_state_toggles_title" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".cyanogenmod.WakeLockBlocker"
+            android:label="@string/wakelock_blocker" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".fragments.AnimationControls"
             android:label="@string/title_animation_controls">
             <intent-filter>
