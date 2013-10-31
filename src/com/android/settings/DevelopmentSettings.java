@@ -281,7 +281,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mPassword = (PreferenceScreen) findPreference(LOCAL_BACKUP_PASSWORD);
         mAllPrefs.add(mPassword);
         mAdvancedReboot = findAndInitCheckboxPref(ADVANCED_REBOOT_KEY);
-        updateAdvancedRebootOptions();
 
         mMSOB = (ListPreference) findPreference(MEDIA_SCANNER_ON_BOOT);
         mAllPrefs.add(mMSOB);
@@ -560,11 +559,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateMSOBOptions();
     }
 
-    private void resetAdvancedRebootOptions() {
-        Settings.Secure.putInt(getActivity().getContentResolver(),
-                Settings.Secure.ADVANCED_REBOOT, 1);
-    }
-
     private void writeAdvancedRebootOptions() {
         Settings.Secure.putInt(getActivity().getContentResolver(),
                 Settings.Secure.ADVANCED_REBOOT,
@@ -573,7 +567,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private void updateAdvancedRebootOptions() {
         mAdvancedReboot.setChecked(Settings.Secure.getInt(getActivity().getContentResolver(),
-                Settings.Secure.ADVANCED_REBOOT, 0) != 0);
+                Settings.Secure.ADVANCED_REBOOT, 1) != 0);
     }
 
     private void resetMSOBOptions() {
