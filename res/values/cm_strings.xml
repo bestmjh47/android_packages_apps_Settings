@@ -1343,4 +1343,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Lockscreen battery ring -->
     <string name="battery_around_lockscreen_ring">Battery around unlock ring</string>
+
+    <!-- General Settings -->
+    <string name="custom_carrier_label_title">Custom carrier label</string>
+    <string name="custom_carrier_label_explain">Please enter a new label. Enter an empty to revert to stock label.</string>
+    <string name="custom_carrier_label_notset">Custom label currently not set</string>
 </resources>
