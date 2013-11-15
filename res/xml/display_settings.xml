@@ -102,6 +102,12 @@
             android:key="advanced_display_prefs"
             android:title="@string/advanced_settings">
 
+            <PreferenceScreen
+                android:id="@+id/animations"
+                android:title="@string/title_animation_controls"
+                android:summary="@string/header_summary_animation"
+                android:fragment="com.android.settings.cyanogenmod.fragments.AnimationControls" />
+
             <CheckBoxPreference
                 android:key="adaptive_backlight"
                 android:title="@string/adaptive_backlight_title"

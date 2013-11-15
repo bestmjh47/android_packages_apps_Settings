@@ -910,4 +910,10 @@
   <string name="block_notifications_title">알림 필터</string>
   <string name="block_notifications_summary">무시할 알림 및 필터 관리</string>
   <string name="no_filters_title">필터가 설정되어 있지 않습니다. 알림을 걸러내려면 길게 누른 뒤 \'이와 같은 메시지 무시\'를 선택하십시오.</string>
+
+  <!-- Animation Controls -->
+  <string name="title_animation_controls">시스템 애니메이션</string>
+  <string name="animation_duration_title">애니메이션 길이</string>
+  <string name="summary_animation_no_override">앱이 화면 전환 효과를 무시하는것을 방지합니다.</string>
+  <string name="animation_duration_default">기본 값</string>
 </resources>
