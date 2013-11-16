@@ -18,6 +18,11 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/themes_settings_title" >
 
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="battery_around_lockscreen_ring"
+        android:title="@string/battery_around_lockscreen_ring"
+        android:defaultValue="false" />
+
     <PreferenceCategory
         android:title="@string/title_general"
         android:key="lockscreen_general_category" >

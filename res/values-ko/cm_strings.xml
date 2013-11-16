@@ -940,4 +940,7 @@
   <string name="trigger_top_summary">트리거 영역의 위치를 조정합니다.</string>
   <string name="trigger_bottom_title">트리거 높이</string>
   <string name="trigger_bottom_summary">트리거 영역의 높이를 조정합니다.</string>
+
+  <!-- Lockscreen battery ring -->
+  <string name="battery_around_lockscreen_ring">잠금 링 주위에 배터리 표시</string>
 </resources>
