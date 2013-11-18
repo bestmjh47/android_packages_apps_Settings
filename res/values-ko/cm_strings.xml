@@ -689,10 +689,13 @@
   <string name="setting_lockscreen_background">적용 중인 배경화면</string>
   <string name="confirm_delete_apn">APN 설정이 삭제됩니다.</string>
   <string name="status_bar_title">상태 표시줄</string>
+  <string name="status_bar_clock_category">시계</string>
+  <string name="status_bar_general_title">일반</string>
   <string name="status_bar_clock_title">시계 스타일</string>
   <string name="status_bar_clock_style_default">기본</string>
   <string name="status_bar_clock_style_center">가운데</string>
   <string name="status_bar_clock_style_hidden">숨김</string>
+  <string name="status_bar_am_pm_title">오전/오후 스타일</string>
   <string name="status_bar_battery_title">배터리 표시 스타일</string>
   <string name="status_bar_style_icon_portrait">세로 아이콘 </string>
   <string name="status_bar_style_icon_landscape">가로 아이콘</string>
@@ -910,6 +913,7 @@
   <string name="block_notifications_title">알림 필터</string>
   <string name="block_notifications_summary">무시할 알림 및 필터 관리</string>
   <string name="no_filters_title">필터가 설정되어 있지 않습니다. 알림을 걸러내려면 길게 누른 뒤 \'이와 같은 메시지 무시\'를 선택하십시오.</string>
+  <string name="camera_sounds_title">카메라 셔터 소리</string>
 
   <!-- Animation Controls -->
   <string name="title_animation_controls">시스템 애니메이션</string>
@@ -943,4 +947,38 @@
 
   <!-- Lockscreen battery ring -->
   <string name="battery_around_lockscreen_ring">잠금 링 주위에 배터리 표시</string>
+
+  <!-- Navigation bar -->
+  <string name="reset">초기화</string>
+  <string name="navbar_enable_bar">탐색 바 활성화</string>
+  <string name="navbar_enable_bar_summary">탐색 바 활성화</string>
+  <string name="navbar_style_dimen_title">치수</string>
+  <string name="navbar_dimensions_reset_message">모든 치수 항목을 기본 값으로 초기화하시겠습니까?</string>
+  <string name="navigation_bar_height_title">탐색 바 높이</string>
+  <string name="navigation_bar_height_summary">세로모드일 때 탐색 바 높이</string>
+  <string name="navigation_bar_width_title">탐색 바 너비</string>
+  <string name="navigation_bar_width_summary">탐색 바가 측면에 있을 때 탐색 바 높이</string>
+  <string name="navigation_bar_size_42_dp_default">42 dp (기본값)</string>
+  <string name="navigation_bar_size_48_dp_default">48 dp (기본값)</string>
+  <string name="navigation_bar_size_0_dp">0 dp (비활성화)</string>
+
+  <!-- Screen recorder -->
+  <string name="screen_recorder_title">화면 녹화</string>
+  <string name="screen_recorder_summary">화면 녹화 설정 조정</string>
+  <string name="screen_recorder_video_dimensions_title">화면크기</string>
+  <string name="screen_recorder_video_bitrate_title">비트레이트</string>
+
+  <!-- Low battery warning policy -->
+  <string name="low_battery_warning_policy_title">배터리 부족 경고</string>
+  <string name="low_battery_warning_policy_popup_sound">팝업창 및 소리</string>
+  <string name="low_battery_warning_policy_notif_sound">알림 및 소리</string>
+  <string name="low_battery_warning_policy_popup">팝업창</string>
+  <string name="low_battery_warning_policy_notif">알림</string>
+  <string name="low_battery_warning_policy_sound">소리</string>
+
+  <!-- Performance -->
+  <string name="pref_force_fast_charge_title">고속 충전 활성화</string>
+
+  <!-- Recent App Panel -->
+  <string name="recent_panel_title">최근 앱</string>
 </resources>
