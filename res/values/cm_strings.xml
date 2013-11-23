@@ -977,10 +977,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Status bar -->
     <string name="status_bar_title">Status bar</string>
+    <string name="status_bar_clock_category">Clock</string>
+    <string name="status_bar_general_title">General</string>
     <string name="status_bar_clock_title">Clock style</string>
     <string name="status_bar_clock_style_default">Default</string>
     <string name="status_bar_clock_style_center">Center</string>
     <string name="status_bar_clock_style_hidden">Hidden</string>
+    <string name="status_bar_am_pm_title">AM/PM style</string>
     <string name="status_bar_battery_title">Battery status style</string>
     <string name="status_bar_style_icon_portrait">Icon portrait</string>
     <string name="status_bar_style_icon_landscape">Icon landscape</string>
