@@ -622,6 +622,7 @@
   <string name="power_menu_title">전원 메뉴</string>
   <string name="power_menu_reboot_title">재시작 메뉴</string>
   <string name="power_menu_screenshot_title">스크린샷</string>
+  <string name="power_menu_screenrecord_title">화면 녹화</string>
   <string name="power_menu_expanded_desktop">데스크탑 확장</string>
   <string name="expanded_desktop_style">데스크탑 확장 스타일</string>
   <string name="expanded_desktop_disabled">사용 안 함</string>
