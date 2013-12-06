@@ -264,6 +264,7 @@
   <string name="title_tile_volume">볼륨</string>
   <string name="title_tile_expanded_desktop">확장된 데스크탑</string>
   <string name="title_tile_network_adb">네트워크를 통한 ADB</string>
+  <string name="title_tile_music">음악</string>
   <string name="title_dynamic_tiles">동적 타일</string>
   <string name="dynamic_tiles_note_title">노트</string>
   <string name="dynamic_tiles_note_summary">동적 타일은 항상 표시되지 않으며 시스템 이벤트가 발생해야 표시됩니다</string>
