@@ -405,6 +405,11 @@
     <string name="cm_sound_mode_vibrate">Vibrate</string>
     <string name="cm_sound_mode_sound">Sound</string>
     <string name="cm_sound_mode_soundVibrate">Sound &amp; Vibrate</string>
+    <string name="pref_music_mode_title">Music modes</string>
+    <string name="music_tile_mode_none">None</string>
+    <string name="music_tile_mode_background">Album artwork</string>
+    <string name="music_tile_mode_tracktitle">Track title</string>
+    <string name="music_tile_mode_all">Album artwork &amp; Track title</string>
 
     <!-- Reset tiles -->
     <string name="tiles_reset_title">Reset</string>

@@ -945,6 +945,11 @@
   <string name="trigger_top_summary">트리거 영역의 위치를 조정합니다.</string>
   <string name="trigger_bottom_title">트리거 높이</string>
   <string name="trigger_bottom_summary">트리거 영역의 높이를 조정합니다.</string>
+  <string name="pref_music_mode_title">음악 타일</string>
+  <string name="music_tile_mode_none">없음</string>
+  <string name="music_tile_mode_background">앨범 아트워크</string>
+  <string name="music_tile_mode_tracktitle">트랙 타이틀</string>
+  <string name="music_tile_mode_all">앨범 아트워크 &amp; 트랙 타이틀</string>
 
   <!-- Lockscreen battery ring -->
   <string name="battery_around_lockscreen_ring">잠금 링 주위에 배터리 표시</string>
