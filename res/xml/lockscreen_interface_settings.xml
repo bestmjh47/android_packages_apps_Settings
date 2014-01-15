@@ -65,6 +65,11 @@
             android:key="lockscreen_modlock_enabled"
             android:title="@string/lockscreen_enable_modlock_title" />
 
+        <CheckBoxPreference
+            android:key="lockscreen_torch"
+            android:title="@string/lockscreen_glowpad_torch_title"
+            android:summary="@string/lockscreen_glowpad_torch_summary" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

@@ -1461,4 +1461,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="low_battery_warning_policy_sound">Sound only</string>
     <string name="battery_prefs_title">Options</string>
     <string name="battery_stats_title">Statistics</string>
+
+    <!-- Glowpad Torch -->
+    <string name="lockscreen_glowpad_torch_title">Slider torch</string>
+    <string name="lockscreen_glowpad_torch_summary">Double-tap and hold the slider to start torch</string>
 </resources>
