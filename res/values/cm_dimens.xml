@@ -37,4 +37,7 @@
     <dimen name="pa_security_width">320dp</dimen>
     <!-- Height of the sliding KeyguardSecurityContainer (includes 2x keyguard_security_view_margin) -->
     <dimen name="pa_security_height">400dp</dimen>
+
+    <!-- Minimal notification row height used to calculate max notification count -->
+    <dimen name="notification_row_min_height">70dp</dimen>
 </resources>
