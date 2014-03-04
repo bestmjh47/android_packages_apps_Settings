@@ -1348,4 +1348,15 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="custom_carrier_label_title">Custom carrier label</string>
     <string name="custom_carrier_label_explain">Please enter a new label. Enter an empty to revert to stock label.</string>
     <string name="custom_carrier_label_notset">Custom label currently not set</string>
+
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">Color picker</string>
+    <string name="press_color_to_apply">Tap on color to apply</string>
+    <string name="arrow_right" translatable="false">\u2192</string>
+    <string name="arrow_down" translatable="false">\u2193</string>
+    <string name="hex_hint" translatable="false">#ff000000</string>
+    <string name="ics_color" translatable="false">!!!</string>
+    <string name="set">Set</string>
+    <string name="hex">Hex:</string>
+    <string name="color_default">Default</string>
 </resources>
