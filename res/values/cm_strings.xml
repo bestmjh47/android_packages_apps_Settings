@@ -1448,6 +1448,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Lockscreen See Through -->
     <string name="see_through_title">Lockscreen Blur</string>
     <string name="see_through_summary">Blurs and displays the content behind your lockscreen. Your data may be visible to those around you</string>
+    <string name="lockscreen_blur_radius_title">Intensity for the blur effect</string>
 
     <!-- Low battery warning policy -->
     <string name="pref_low_battery_warning_policy_title">Low battery warning</string>
