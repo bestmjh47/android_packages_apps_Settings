@@ -1260,6 +1260,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Performance menu, graphics options category -->
     <string name="graphics_title">Graphics and rendering</string>
 
+    <!-- Performance menu, misc options category -->
+    <string name="misc_title">Misc</string>
+
     <!-- Protected Apps -->
     <string name="menu_hidden_apps_delete">Reset</string>
     <string name="menu_hidden_apps_reset_lock">Reset pattern lock</string>
@@ -1740,4 +1743,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="screen_recorder_bitrate_20000000">20000000</string>
     <string name="screen_recorder_bitrate_50000000">50000000</string>
     <string name="screen_recorder_bitrate_100000000">100000000</string>
+
+    <!-- Force fast charge -->
+    <string name="pref_force_fast_charge_title">Force fast charge</string>
 </resources>
