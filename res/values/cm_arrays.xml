@@ -1238,4 +1238,10 @@
         <item>@string/screen_recorder_bitrate_50000000</item>
         <item>@string/screen_recorder_bitrate_100000000</item>
     </string-array>
+
+    <!-- System app remover -->
+    <string-array name="slimsizer_profile_array">
+        <item>Load Profile</item>
+        <item>Save Profile</item>
+    </string-array>
 </resources>
