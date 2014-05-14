@@ -26,6 +26,7 @@ import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -139,6 +140,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mPowerSounds;
     private CheckBoxPreference mPowerSoundsVibrate;
     private Preference mPowerSoundsRingtone;
+
+    // To track whether a confirmation dialog was clicked.
+    private boolean mDialogClicked;
+    private Dialog mWaiverDialog;
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -417,8 +422,56 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             }
 
         } else if (preference == mCameraSounds) {
-            SystemProperties.set(PROP_CAMERA_SOUND, mCameraSounds.isChecked() ? "1" : "0");
+            if (!mCameraSounds.isChecked()) {
+                // User is trying to disable the feature, display the waiver
+                mDialogClicked = false;
+                dismissDialog();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage(R.string.cyanogenmod_waiver_body);
+                builder.setTitle(R.string.cyanogenmod_waiver_title);
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
 
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (dialog == mWaiverDialog) {
+                            if (!mDialogClicked) {
+                                mCameraSounds.setChecked(true);
+                            }
+                            mWaiverDialog = null;
+                        }
+                    }
+                });
+
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (dialog == mWaiverDialog) {
+                            if (which == DialogInterface.BUTTON_POSITIVE) {
+                                mDialogClicked = true;
+                                SystemProperties.set(PROP_CAMERA_SOUND, "0");
+                            }
+                        }
+                    }
+                });
+
+                mWaiverDialog = builder.show();
+                mWaiverDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        // Assuming that onClick gets called first
+                        if (dialog == mWaiverDialog) {
+                            if (!mDialogClicked) {
+                                mCameraSounds.setChecked(true);
+                            }
+                            mWaiverDialog = null;
+                        }
+                    }
+                });
+            } else {
+                SystemProperties.set(PROP_CAMERA_SOUND, "1");
+            }
         } else if (preference == mMusicFx) {
             // let the framework fire off the intent
             return false;
@@ -652,6 +705,13 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         ab.setMessage(R.string.dock_not_found_text);
         ab.setPositiveButton(android.R.string.ok, null);
         return ab.create();
+    }
+
+    private void dismissDialog() {
+        if (mWaiverDialog != null) {
+            mWaiverDialog.dismiss();
+            mWaiverDialog = null;
+        }
     }
 }
 
