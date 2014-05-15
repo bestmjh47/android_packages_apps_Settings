@@ -34,12 +34,12 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
-import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.SubMenu;
 
 import com.android.internal.os.PowerProfile;
 import com.android.settings.HelpUtils;
@@ -51,8 +51,7 @@ import java.util.List;
  * Displays a list of apps and subsystems that consume power, ordered by how much power was
  * consumed since the last time it was unplugged.
  */
-public class PowerUsageSummary extends PreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+public class PowerUsageSummary extends PreferenceFragment {
 
     private static final boolean DEBUG = false;
 
@@ -60,20 +59,21 @@ public class PowerUsageSummary extends PreferenceFragment implements
 
     private static final String KEY_APP_LIST = "app_list";
     private static final String KEY_BATTERY_STATUS = "battery_status";
-    private static final String KEY_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";
-    private static final String KEY_BATTERY_PREFS_CATEGORY = "battery_prefs";
-    private static final String KEY_BATTERY_STATS_CATEGORY = "battery_stats";
 
     private static final int MENU_STATS_TYPE = Menu.FIRST;
     private static final int MENU_STATS_REFRESH = Menu.FIRST + 1;
-    private static final int MENU_STATS_RESET = Menu.FIRST + 2;
-    private static final int MENU_HELP = Menu.FIRST + 3;
+    private static final int MENU_BATTERY_WARNING = Menu.FIRST + 2;
+    private static final int SUBMENU_WARNING_POPSOUND = Menu.FIRST + 3;
+    private static final int SUBMENU_WARNING_NOTIFSOUND = Menu.FIRST + 4;
+    private static final int SUBMENU_WARNING_POPUPDIALOG = Menu.FIRST + 5;
+    private static final int SUBMENU_WARNING_NOTIF = Menu.FIRST + 6;
+    private static final int SUBMENU_WARNING_SOUND = Menu.FIRST + 7;
+    private static final int SUBMENU_WARNING_NONE = Menu.FIRST + 8;
+    private static final int MENU_STATS_RESET = Menu.FIRST + 9;
+    private static final int MENU_HELP = Menu.FIRST + 10;
 
     private PreferenceGroup mAppListGroup;
     private Preference mBatteryStatusPref;
-    private ListPreference mLowBatteryWarning;
-    private PreferenceCategory mBatteryPrefsCat;
-    private PreferenceCategory mBatteryStatsCat;
 
     private int mStatsType = BatteryStats.STATS_SINCE_CHARGED;
 
@@ -116,20 +116,6 @@ public class PowerUsageSummary extends PreferenceFragment implements
         addPreferencesFromResource(R.xml.power_usage_summary);
         mAppListGroup = (PreferenceGroup) findPreference(KEY_APP_LIST);
         mBatteryStatusPref = mAppListGroup.findPreference(KEY_BATTERY_STATUS);
-
-        mBatteryPrefsCat =
-            (PreferenceCategory) mAppListGroup.findPreference(KEY_BATTERY_PREFS_CATEGORY);
-        mBatteryStatsCat =
-            (PreferenceCategory) mAppListGroup.findPreference(KEY_BATTERY_STATS_CATEGORY);
-
-        mLowBatteryWarning =
-            (ListPreference) mAppListGroup.findPreference(KEY_LOW_BATTERY_WARNING_POLICY);
-        int lowBatteryWarning = Settings.System.getInt(getActivity().getContentResolver(),
-                                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 0);
-        mLowBatteryWarning.setValue(String.valueOf(lowBatteryWarning));
-        mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntry());
-        mLowBatteryWarning.setOnPreferenceChangeListener(this);
-
         setHasOptionsMenu(true);
     }
 
@@ -184,21 +170,10 @@ public class PowerUsageSummary extends PreferenceFragment implements
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mLowBatteryWarning) {
-            int lowBatteryWarning = Integer.valueOf((String) newValue);
-            int index = mLowBatteryWarning.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY,
-                    lowBatteryWarning);
-            mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntries()[index]);
-            return true;
-        }
-        return false;
-    }
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        int lowBatteryWarning = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 0);
         if (DEBUG) {
             menu.add(0, MENU_STATS_TYPE, 0, R.string.menu_stats_total)
                     .setIcon(com.android.internal.R.drawable.ic_menu_info_details)
@@ -209,6 +184,23 @@ public class PowerUsageSummary extends PreferenceFragment implements
                 .setAlphabeticShortcut('r');
         refresh.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
                 MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        SubMenu batteryWarning = menu.addSubMenu(0, MENU_BATTERY_WARNING, 0, R.string.low_battery_warning_policy_title);
+        batteryWarning.add(1, SUBMENU_WARNING_POPSOUND, 1, R.string.low_battery_warning_policy_popup_sound)
+                .setChecked(lowBatteryWarning == 0);
+        batteryWarning.add(1, SUBMENU_WARNING_NOTIFSOUND, 2, R.string.low_battery_warning_policy_notif_sound)
+                .setChecked(lowBatteryWarning == 1);
+        batteryWarning.add(1, SUBMENU_WARNING_POPUPDIALOG, 3, R.string.low_battery_warning_policy_popup)
+                .setChecked(lowBatteryWarning == 2);
+        batteryWarning.add(1, SUBMENU_WARNING_NOTIF, 4, R.string.low_battery_warning_policy_notif)
+                .setChecked(lowBatteryWarning == 3);
+        batteryWarning.add(1, SUBMENU_WARNING_SOUND, 5, R.string.low_battery_warning_policy_sound)
+                .setChecked(lowBatteryWarning == 4);
+        batteryWarning.add(1, SUBMENU_WARNING_SOUND, 6, R.string.disabled)
+                .setChecked(lowBatteryWarning == 5);
+        batteryWarning.setGroupCheckable(1, true, true);
+        MenuItem warningIcon = batteryWarning.getItem();
+        warningIcon.setIcon(R.drawable.ic_action_warning)
+                   .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         MenuItem reset = menu.add(0, MENU_STATS_RESET, 0, R.string.menu_stats_reset)
                 .setIcon(R.drawable.ic_menu_delete_holo_dark)
                 .setAlphabeticShortcut('d');
@@ -237,6 +229,36 @@ public class PowerUsageSummary extends PreferenceFragment implements
                 mStatsHelper.clearStats();
                 refreshStats();
                 return true;
+            case SUBMENU_WARNING_POPSOUND:
+                item.setChecked(true);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 0);
+                return true;
+            case SUBMENU_WARNING_NOTIFSOUND:
+                item.setChecked(true);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 1);
+                return true;
+            case SUBMENU_WARNING_POPUPDIALOG:
+                item.setChecked(true);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 2);
+                return true;
+            case SUBMENU_WARNING_NOTIF:
+                item.setChecked(true);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 3);
+                return true;
+            case SUBMENU_WARNING_SOUND:
+                item.setChecked(true);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 4);
+                return true;
+            case SUBMENU_WARNING_NONE:
+                item.setChecked(true);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 5);
+                return true;
             case MENU_STATS_RESET:
                 mStatsHelper.resetStatistics();
                 mStatsHelper.clearStats();
@@ -256,13 +278,6 @@ public class PowerUsageSummary extends PreferenceFragment implements
     private void refreshStats() {
         mAppListGroup.removeAll();
         mAppListGroup.setOrderingAsAdded(false);
-
-        mBatteryPrefsCat.setOrder(-5);
-        mAppListGroup.addPreference(mBatteryPrefsCat);
-        mLowBatteryWarning.setOrder(-4);
-        mAppListGroup.addPreference(mLowBatteryWarning);
-        mBatteryStatsCat.setOrder(-3);
-        mAppListGroup.addPreference(mBatteryStatsCat);
 
         mBatteryStatusPref.setOrder(-2);
         mAppListGroup.addPreference(mBatteryStatusPref);
