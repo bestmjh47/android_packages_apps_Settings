@@ -1024,4 +1024,7 @@
   <string name="halo_msgbox_animation_summary">Halo에 오는 알림의 박스 애니메이션</string>
   <string name="halo_msgbox_animation_none">없음</string>
   <string name="halo_msgbox_animation_flip">뒤집기</string>
+
+  <!-- Toast Animation -->
+  <string name="toast_animation_title">토스트 애니메이션</string>
 </resources>
