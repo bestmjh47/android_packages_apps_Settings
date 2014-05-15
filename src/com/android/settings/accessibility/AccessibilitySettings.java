@@ -51,6 +51,7 @@ import android.view.accessibility.AccessibilityManager;
 import android.widget.TextView;
 
 import com.android.internal.content.PackageMonitor;
+import com.android.settings.util.Helpers;
 import com.android.settings.DialogCreatable;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -98,6 +99,8 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             "captioning_preference_screen";
     private static final String DISPLAY_MAGNIFICATION_PREFERENCE_SCREEN =
             "screen_magnification_preference_screen";
+    private static final String CUSTOM_RECENT_MODE =
+            "custom_recent_mode";
     private static final String RECENT_PANEL_LEFTY_MODE =
             "recent_panel_lefty_mode";
     private static final String RECENT_PANEL_SCALE =
@@ -190,6 +193,7 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
     private PreferenceScreen mCaptioningPreferenceScreen;
     private PreferenceScreen mDisplayMagnificationPreferenceScreen;
     private PreferenceScreen mGlobalGesturePreferenceScreen;
+    private CheckBoxPreference mRecentsCustom;
     private CheckBoxPreference mRecentPanelLeftyMode;
     private ListPreference mRecentPanelScale;
     private ListPreference mRecentPanelExpandedMode;
@@ -230,6 +234,11 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
                     Settings.Secure.LONG_PRESS_TIMEOUT, Integer.parseInt(stringValue));
             mSelectLongPressTimeoutPreference.setSummary(
                     mLongPressTimeoutValuetoTitleMap.get(stringValue));
+            return true;
+        } else if (preference == mRecentsCustom) {
+            Settings.System.putBoolean(getContentResolver(),
+                    Settings.System.CUSTOM_RECENT_TOGGLE, (Boolean) newValue);
+            Helpers.restartSystemUI();
             return true;
         } else if (preference == mRecentPanelScale) {
             int value = Integer.parseInt((String) newValue);
@@ -355,6 +364,10 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             // nor long press power does not show global actions menu.
             mSystemsCategory.removePreference(mGlobalGesturePreferenceScreen);
         }
+
+        mRecentsCustom =
+                (CheckBoxPreference) findPreference(CUSTOM_RECENT_MODE);
+        mRecentsCustom.setOnPreferenceChangeListener(this);
 
         mRecentPanelLeftyMode =
                 (CheckBoxPreference) findPreference(RECENT_PANEL_LEFTY_MODE);
@@ -514,6 +527,10 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             mGlobalGesturePreferenceScreen.setSummary(
                     R.string.accessibility_global_gesture_preference_summary_off);
         }
+
+        final boolean enableRecentsCustom = Settings.System.getBoolean(getContentResolver(),
+                Settings.System.CUSTOM_RECENT_TOGGLE, true);
+        mRecentsCustom.setChecked(enableRecentsCustom);
 
         final boolean recentLeftyMode = Settings.System.getInt(getContentResolver(),
                 Settings.System.RECENT_PANEL_GRAVITY, Gravity.RIGHT) == Gravity.LEFT;
