@@ -1744,8 +1744,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="screen_recorder_bitrate_50000000">50000000</string>
     <string name="screen_recorder_bitrate_100000000">100000000</string>
 
-    <!-- Force fast charge -->
+    <!-- Performance -->
+    <string name="pref_mcps_title">Multicore power saving</string>
     <string name="pref_force_fast_charge_title">Force fast charge</string>
+    <string name="mcps_0">Off</string>
+    <string name="mcps_1">On</string>
+    <string name="mcps_2">Aggressive</string>
 
     <!-- SlimSizer  -->
     <string name="listsystem">list</string>

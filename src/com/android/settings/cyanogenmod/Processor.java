@@ -52,6 +52,8 @@ public class Processor extends SettingsPreferenceFragment implements
     public static String FREQ_MAX_FILE = null;
     public static String FREQ_MIN_FILE = null;
     public static final String SOB_PREF = "pref_cpu_set_on_boot";
+    public static final String MCPS_PREF = "pref_mcps";
+    public static final String MCPS_FILE = "/sys/devices/system/cpu/sched_mc_power_savings";
 
     protected static boolean freqCapFilesInitialized = false;
 
@@ -65,6 +67,7 @@ public class Processor extends SettingsPreferenceFragment implements
     private ListPreference mGovernorPref;
     private ListPreference mMinFrequencyPref;
     private ListPreference mMaxFrequencyPref;
+    private ListPreference mMcpsPref;
 
     private class CurCPUThread extends Thread {
         private boolean mInterrupt = false;
@@ -129,6 +132,7 @@ public class Processor extends SettingsPreferenceFragment implements
         mCurFrequencyPref = (Preference) prefScreen.findPreference(FREQ_CUR_PREF);
         mMinFrequencyPref = (ListPreference) prefScreen.findPreference(FREQ_MIN_PREF);
         mMaxFrequencyPref = (ListPreference) prefScreen.findPreference(FREQ_MAX_PREF);
+        mMcpsPref = (ListPreference) prefScreen.findPreference(MCPS_PREF);
 
         /* Governor
         Some systems might not use governors */
@@ -196,6 +200,15 @@ public class Processor extends SettingsPreferenceFragment implements
 
             mCurCPUThread.start();
         }
+
+        // multicore power saving
+        if (!Utils.fileExists(MCPS_FILE)) {
+            prefScreen.removePreference(mMcpsPref);
+        } else {
+            mMcpsPref.setValue(Utils.fileReadOneLine(MCPS_FILE));
+            mMcpsPref.setSummary(mMcpsPref.getEntry());
+            mMcpsPref.setOnPreferenceChangeListener(this);
+        }
     }
 
     private void updateCpufreqValues() {
@@ -246,6 +259,11 @@ public class Processor extends SettingsPreferenceFragment implements
                 fname = FREQ_MIN_FILE;
             } else if (preference == mMaxFrequencyPref) {
                 fname = FREQ_MAX_FILE;
+            } else if (preference == mMcpsPref) {
+                int index = mMcpsPref.findIndexOfValue(newValue);
+                Utils.fileWriteOneLine(MCPS_FILE, newValue);
+                mMcpsPref.setSummary(mMcpsPref.getEntries()[index]);
+                return true;
             }
 
             if (Utils.fileWriteOneLine(fname, newValue)) {
