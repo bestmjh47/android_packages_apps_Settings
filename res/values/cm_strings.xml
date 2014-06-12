@@ -1439,6 +1439,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="halo_msgbox_animation_none">None</string>
     <string name="halo_msgbox_animation_flip">Flip</string>
 
+    <string name="halo_notify_silent_title">Ping on silent notification</string>
+    <string name="halo_notify_silent_summary">Halo will ping when silent notifications are received</string>
+
     <!-- Label for are-halo-notifications-allowed checkbox in app details [CHAR LIMIT=20] -->
     <string name="app_halo_label_black">Blacklist from Halo</string>
     <string name="app_halo_label_white">Whitelist from Halo</string>

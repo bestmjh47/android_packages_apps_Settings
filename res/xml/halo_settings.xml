@@ -72,4 +72,10 @@ limitations under the License.
         android:summary="@string/halo_unlock_ping_summary"
         android:defaultValue="false" />
 
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="halo_notify_silent"
+        android:title="@string/halo_notify_silent_title"
+        android:summary="@string/halo_notify_silent_summary"
+        android:defaultValue="false" />
+
 </PreferenceScreen>
