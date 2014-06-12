@@ -1440,8 +1440,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="halo_msgbox_animation_flip">Flip</string>
 
     <!-- Label for are-halo-notifications-allowed checkbox in app details [CHAR LIMIT=20] -->
-    <string name="app_halo_label_black">Blacklist from HALO</string>
-    <string name="app_halo_label_white">Whitelist from HALO</string>
+    <string name="app_halo_label_black">Blacklist from Halo</string>
+    <string name="app_halo_label_white">Whitelist from Halo</string>
 
     <!-- Quicksettings panel floating window -->
     <string name="title_floating_window">Floating window</string>
@@ -1791,4 +1791,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="toast_Translucent_animation">Translucent Animation</string>
     <string name="toast_SlideLeftRight_animation">Slide Left To Right Animation</string>
     <string name="toast_SlideRightLeft_animation">Slide Right To Left Animation</string>
+
+    <!--Blacklist-->
+    <string name="blacklist_button_title">Blacklist</string>
+    <string name="floating_blacklist_label">Blacklist from Floating Mode</string>
 </resources>
