@@ -310,9 +310,7 @@ public class RingerVolumePreference extends VolumePreference {
                 if (!isChecked) {
                     // User is trying to disable the feature, display the waiver
                     mDialogClicked = false;
-                    if (mWaiverDialog != null) {
-                        dismissDialog();
-                    }
+                    dismissDialog();
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setMessage(R.string.cyanogenmod_waiver_body);
                     builder.setTitle(R.string.cyanogenmod_waiver_title);

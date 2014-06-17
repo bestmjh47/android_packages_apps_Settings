@@ -926,7 +926,6 @@
   <!-- App sidebar -->
   <string name="app_sidebar_title">앱 사이드바</string>
   <string name="app_sidebar_enable_title">Appbar 활성화</string>
-  <string name="app_sidebar_summary">앱 사이드바 설정 변경</string>
   <string name="app_sidebar_enable_summaryOn">Appbar가 활성화됨</string>
   <string name="app_sidebar_enable_summaryOff">Appbar가 비활성화됨</string>
   <string name="app_sidebar_setup_items_title">Appbar 내용 설정</string>
