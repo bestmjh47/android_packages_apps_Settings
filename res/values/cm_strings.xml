@@ -1525,7 +1525,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Pie Control -->
     <string name="pie_control_category">Pie Control</string>
-    <string name="pie_control_title">SlimPIE</string>
+    <string name="pie_control_title">Pie control</string>
     <string name="pie_control_summary">Enable pie controls</string>
     <string name="pie_control_size">Navigation size</string>
     <string name="pie_control_trigger_positions">Trigger options</string>
