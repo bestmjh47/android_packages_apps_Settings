@@ -41,6 +41,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Switch;
 
+import com.android.settings.cyanogenmod.SeekBarPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -52,11 +53,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HeadsUpSettings extends SettingsPreferenceFragment
-        implements AdapterView.OnItemLongClickListener, Preference.OnPreferenceClickListener {
+public class HeadsUpSettings extends SettingsPreferenceFragment implements
+        AdapterView.OnItemLongClickListener, Preference.OnPreferenceChangeListener,
+        Preference.OnPreferenceClickListener {
 
     private static final int DIALOG_DND_APPS = 0;
     private static final int DIALOG_BLACKLIST_APPS = 1;
+
+    private static final String KEY_HEADS_UP_TIMEOUT = "heads_up_timeout";
+    private static final String KEY_HEADS_UP_FS_TIMEOUT = "heads_up_fullscreen_timeout";
 
     private PackageListAdapter mPackageAdapter;
     private PackageManager mPackageManager;
@@ -64,6 +69,8 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     private PreferenceGroup mBlacklistPrefList;
     private Preference mAddDndPref;
     private Preference mAddBlacklistPref;
+    private SeekBarPreference mHeadsUpTimeout;
+    private SeekBarPreference mHeadsUpFSTimeout;
 
     private String mDndPackageList;
     private String mBlacklistPackageList;
@@ -105,6 +112,16 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
 
         mAddDndPref.setOnPreferenceClickListener(this);
         mAddBlacklistPref.setOnPreferenceClickListener(this);
+
+        mHeadsUpTimeout = (SeekBarPreference) findPreference(KEY_HEADS_UP_TIMEOUT);
+        mHeadsUpTimeout.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.HEADS_UP_TIMEOUT, 3700));
+        mHeadsUpTimeout.setOnPreferenceChangeListener(this);
+
+        mHeadsUpFSTimeout = (SeekBarPreference) findPreference(KEY_HEADS_UP_FS_TIMEOUT);
+        mHeadsUpFSTimeout.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.HEADS_UP_FS_TIMEOUT, 700));
+        mHeadsUpFSTimeout.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -296,6 +313,19 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         // Add 'add' options
         mDndPrefList.addPreference(mAddDndPref);
         mBlacklistPrefList.addPreference(mAddBlacklistPref);
+    }
+
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if (preference == mHeadsUpTimeout) {
+            int length = ((Integer) objValue).intValue();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.HEADS_UP_TIMEOUT, length);
+        } else if (preference == mHeadsUpFSTimeout) {
+            int length = ((Integer) objValue).intValue();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.HEADS_UP_FS_TIMEOUT, length);
+        }
+        return true;
     }
 
     @Override

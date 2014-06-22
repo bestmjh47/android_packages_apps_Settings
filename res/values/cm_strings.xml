@@ -1796,7 +1796,11 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="toast_SlideLeftRight_animation">Slide Left To Right Animation</string>
     <string name="toast_SlideRightLeft_animation">Slide Right To Left Animation</string>
 
-    <!--Blacklist-->
+    <!-- Blacklist -->
     <string name="blacklist_button_title">Blacklist</string>
     <string name="floating_blacklist_label">Blacklist from Floating Mode</string>
+
+    <!-- Heads Up Timeout -->
+    <string name="heads_up_timeout">Heads up timeout</string>
+    <string name="heads_up_fullscreen_timeout">Heads up timeout on fullscreen</string>
 </resources>
