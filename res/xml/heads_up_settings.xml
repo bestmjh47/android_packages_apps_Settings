@@ -17,6 +17,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings" >
 
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="heads_up_floating_window"
+            android:title="@string/heads_up_floating_window"
+            android:defaultValue="true" />
+
     <com.android.settings.cyanogenmod.SeekBarPreference
             android:key="heads_up_timeout"
             android:title="@string/heads_up_timeout"
