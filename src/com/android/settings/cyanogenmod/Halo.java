@@ -37,7 +37,6 @@ public class Halo extends SettingsPreferenceFragment
     private static final String KEY_HALO_STATE = "halo_state";
     private static final String KEY_HALO_HIDE = "halo_hide";
     private static final String KEY_HALO_SIZE = "halo_size";
-    private static final String KEY_HALO_PAUSE = "halo_pause";
     private static final String KEY_HALO_MSGBOX = "halo_msgbox";
     private static final String KEY_HALO_MSGBOX_ANIMATION = "halo_msgbox_animation";
     private static final String KEY_HALO_NOTIFY_COUNT = "halo_notify_count";
@@ -46,7 +45,6 @@ public class Halo extends SettingsPreferenceFragment
     private ListPreference mHaloState;
     private ListPreference mHaloSize;
     private CheckBoxPreference mHaloHide;
-    private CheckBoxPreference mHaloPause;
     private ListPreference mHaloNotifyCount;
     private ListPreference mHaloMsgAnimate;
     private CheckBoxPreference mHaloMsgBox;
@@ -73,11 +71,6 @@ public class Halo extends SettingsPreferenceFragment
         mHaloHide = (CheckBoxPreference) prefSet.findPreference(KEY_HALO_HIDE);
         mHaloHide.setChecked(Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.HALO_HIDE, 0) == 1);
-
-        int isLowRAM = (!ActivityManager.isLowRamDeviceStatic()) ? 0 : 1;
-        mHaloPause = (CheckBoxPreference) prefSet.findPreference(KEY_HALO_PAUSE);
-        mHaloPause.setChecked(Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HALO_PAUSE, isLowRAM) == 1);
 
         mHaloSize = (ListPreference) prefSet.findPreference(KEY_HALO_SIZE);
         try {
@@ -132,10 +125,6 @@ public class Halo extends SettingsPreferenceFragment
         if (preference == mHaloHide) {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.HALO_HIDE, mHaloHide.isChecked()
-                    ? 1 : 0);
-        } else if (preference == mHaloPause) {
-            Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.HALO_PAUSE, mHaloPause.isChecked()
                     ? 1 : 0);
         } else if (preference == mHaloMsgBox) {
             Settings.System.putInt(mContext.getContentResolver(),

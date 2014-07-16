@@ -1410,8 +1410,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="halo_state_summary">Enables black/white listing notifications</string>
     <string name="halo_state_black">Black list</string>
     <string name="halo_state_white">White list</string>
-    <string name="halo_pause_title">Pause active app</string>
-    <string name="halo_pause_summary">When opening an app with Halo the underlying app will get paused</string>
     <string name="halo_notification_msgbox_title">Enable message pop-up</string>
     <string name="halo_notification_msgbox_summary">Show message box for incoming notifications</string>
     <string name="halo_unlock_ping_title">Ping on unlock</string>
