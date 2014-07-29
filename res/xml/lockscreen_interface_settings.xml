@@ -38,6 +38,11 @@
             android:entryValues="@array/lockscreen_battery_status_values"
             android:defaultValue="0" />
 
+        <CheckBoxPreference
+            android:key="lock_before_unlock"
+            android:title="@string/lock_before_unlock_title"
+            android:summary="@string/lock_before_unlock_summary" />
+
         <Preference
             android:fragment="com.android.settings.cyanogenmod.LockscreenTargets"
             android:key="lockscreen_targets"
