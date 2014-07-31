@@ -124,6 +124,14 @@
         android:fragment="com.android.settings.cyanogenmod.NotificationDrawer"
         android:title="@string/notification_drawer_title" />
 
+    <!-- Recent App Panel -->
+    <header
+        settings:includeXmlForSearch="@xml/recent_settings"
+        android:id="@+id/recent_settings"
+        android:icon="@drawable/ic_settings_recent"
+        android:fragment="com.android.settings.cyanogenmod.Recent"
+        android:title="@string/recent_panel_title" />
+
     <!-- Gestures -->
     <header
         android:id="@+id/device_specific_gesture_settings"

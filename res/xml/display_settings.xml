@@ -117,11 +117,6 @@
                 android:title="@string/title_animation_controls"
                 android:fragment="com.android.settings.cyanogenmod.fragments.AnimationControls" />
 
-            <PreferenceScreen
-                android:key="recent"
-                android:fragment="com.android.settings.cyanogenmod.Recent"
-                android:title="@string/recent_panel_title" />
-
             <CheckBoxPreference
                 android:key="adaptive_backlight"
                 android:title="@string/adaptive_backlight_title"

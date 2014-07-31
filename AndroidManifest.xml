@@ -1901,6 +1901,8 @@
             android:label="@string/sizer_title" >
         </activity>
 
+        <activity android:name=".cyanogenmod.Recent" />
+
         <!-- "Blacklist settings" UI, used only on voice-capable phone devices. -->
         <activity android:name="Settings$BlacklistSettingsActivity"
                 android:theme="@style/Theme.DialogWhenLarge"
