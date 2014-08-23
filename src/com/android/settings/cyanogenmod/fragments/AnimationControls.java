@@ -9,7 +9,6 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.preference.CheckBoxPreference;
 import android.provider.Settings;
-import android.widget.Toast;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.widgets.AnimBarPreference;
 import com.android.settings.R;
@@ -20,9 +19,6 @@ import java.util.Arrays;
 
 public class AnimationControls extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
-    private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
-    private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
-    private static final String KEY_TOAST_ANIMATION = "toast_animation";
     private static final String ACTIVITY_OPEN = "activity_open";
     private static final String ACTIVITY_CLOSE = "activity_close";
     private static final String TASK_OPEN = "task_open";
@@ -36,9 +32,6 @@ public class AnimationControls extends SettingsPreferenceFragment implements OnP
     private static final String WALLPAPER_INTRA_OPEN = "wallpaper_intra_open";
     private static final String WALLPAPER_INTRA_CLOSE = "wallpaper_intra_close";
 
-    ListPreference mListViewAnimation;
-    ListPreference mListViewInterpolator;
-    ListPreference mToastAnimation;
     ListPreference mActivityOpenPref;
     ListPreference mActivityClosePref;
     ListPreference mTaskOpenPref;
@@ -73,29 +66,6 @@ public class AnimationControls extends SettingsPreferenceFragment implements OnP
             mAnimationsNum[i] = String.valueOf(mAnimations[i]);
         }
 
-        // ListView Animations
-        mListViewAnimation = (ListPreference) findPreference(KEY_LISTVIEW_ANIMATION);
-        int listviewanimation = Settings.System.getInt(getActivity().getContentResolver(),
-            Settings.System.LISTVIEW_ANIMATION, 0);
-        mListViewAnimation.setValue(String.valueOf(listviewanimation));
-        mListViewAnimation.setSummary(mListViewAnimation.getEntry());
-        mListViewAnimation.setOnPreferenceChangeListener(this);
-
-        mListViewInterpolator = (ListPreference) findPreference(KEY_LISTVIEW_INTERPOLATOR);
-        int listviewinterpolator = Settings.System.getInt(getActivity().getContentResolver(),
-            Settings.System.LISTVIEW_INTERPOLATOR, 0);
-        mListViewInterpolator.setValue(String.valueOf(listviewinterpolator));
-        mListViewInterpolator.setSummary(mListViewInterpolator.getEntry());
-        mListViewInterpolator.setOnPreferenceChangeListener(this);
-
-        // Toast Animations
-        mToastAnimation = (ListPreference)findPreference(KEY_TOAST_ANIMATION);
-        int CurrentToastAnimation = Settings.System.getInt(getContentResolver(), Settings.System.TOAST_ANIMATION, 1);
-        mToastAnimation.setValueIndex(CurrentToastAnimation);
-        mToastAnimation.setSummary(mToastAnimation.getEntries()[CurrentToastAnimation]);
-        mToastAnimation.setOnPreferenceChangeListener(this);
-
-        // AOKP Custom System Animations
         mAnimNoOverride = (CheckBoxPreference) findPreference(ANIMATION_NO_OVERRIDE);
         mAnimNoOverride.setChecked(Settings.System.getBoolean(mContentRes,
                 Settings.System.ANIMATION_CONTROLS_NO_OVERRIDE, false));
@@ -181,35 +151,7 @@ public class AnimationControls extends SettingsPreferenceFragment implements OnP
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         boolean result = false;
 
-        if (preference == mListViewAnimation) {
-
-            int listviewanimation = Integer.valueOf((String) newValue);
-            int index = mListViewAnimation.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.LISTVIEW_ANIMATION,
-                    listviewanimation);
-            mListViewAnimation.setSummary(mListViewAnimation.getEntries()[index]);
-            return true;
-
-        } else if (preference == mListViewInterpolator) {
-
-            int listviewinterpolator = Integer.valueOf((String) newValue);
-            int index = mListViewInterpolator.findIndexOfValue((String) newValue);
-            result = Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.LISTVIEW_INTERPOLATOR,
-                    listviewinterpolator);
-            mListViewInterpolator.setSummary(mListViewInterpolator.getEntries()[index]);
-            return true;
-
-        } else if (preference == mToastAnimation) {
-
-            int index = mToastAnimation.findIndexOfValue((String) newValue);
-            result = Settings.System.putString(getContentResolver(), Settings.System.TOAST_ANIMATION, (String) newValue);
-            mToastAnimation.setSummary(mToastAnimation.getEntries()[index]);
-            Toast.makeText(mContext, "Toast Test", Toast.LENGTH_SHORT).show();
-            return true;
-
-        } else if (preference == mActivityOpenPref) {
+        if (preference == mActivityOpenPref) {
 
             int val = Integer.parseInt((String) newValue);
             result = Settings.System.putInt(mContentRes,

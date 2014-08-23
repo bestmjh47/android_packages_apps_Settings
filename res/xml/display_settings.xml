@@ -113,9 +113,9 @@
                 android:title="@string/app_sidebar_title" />
 
             <PreferenceScreen
-                android:id="@+id/animations"
+                android:key="animations"
                 android:title="@string/title_animation_controls"
-                android:fragment="com.android.settings.cyanogenmod.fragments.AnimationControls" />
+                android:fragment="com.android.settings.cyanogenmod.AnimationSettings" />
 
             <CheckBoxPreference
                 android:key="adaptive_backlight"
