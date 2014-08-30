@@ -987,6 +987,26 @@
 
   <!-- Recent App Panel -->
   <string name="recent_panel_title">최근 앱</string>
+  <string name="recent_panel_scale_title">크기</string>
+  <string name="recent_panel_scale_summary">최근 앱 패널 크기 퍼센트</string>
+  <string name="recent_panel_100">100% (기본값)</string>
+  <string name="recent_panel_expanded_mode_title">확장 모드</string>
+  <string name="recent_panel_expanded_mode_summary">최근 작업의 확장된 미리보기 모드</string>
+  <string name="recent_panel_expanded_mode_auto">자동 (기본값)</string>
+  <string name="recent_panel_expanded_mode_always">항상</string>
+  <string name="recent_panel_expanded_mode_never">비활성화</string>
+  <string name="recent_panel_show_topmost_title">활성화된 작업 표시</string>
+  <string name="recent_panel_show_topmost_summary">활성화된 작업을 최근 앱에서 제외하지 않음</string>
+  <string name="recent_panel_bg_color_title">배경 색상</string>
+  <string name="recent_panel_reset_message">모든 색상을 기본값으로 되돌리시겠습니까?</string>
+
+  <!-- ATTENTION: RTL languages need to replace left with right -->
+  <string name="recent_panel_lefty_mode_title">좌측에 표시</string>
+  <string name="recent_panel_lefty_mode_summary">최근 앱 패널을 좌측에 표시</string>
+
+  <!-- Custom Recent Settings -->
+  <string name="custom_recent_title">최근 앱 스타일 변경</string>
+  <string name="custom_recent_summary">체크하여 슬림롬의 최근 앱, 체크 해제하여 기본 최근 앱 표시</string>
 
   <!-- ListView animation -->
   <string name="listview_category">리스트뷰 애니메이션</string>
@@ -1023,7 +1043,13 @@
   <string name="halo_msgbox_animation_summary">Halo에 오는 알림의 박스 애니메이션</string>
   <string name="halo_msgbox_animation_none">없음</string>
   <string name="halo_msgbox_animation_flip">뒤집기</string>
+  <string name="halo_notify_silent_title">조용한 알림 수신 시 알림</string>
+  <string name="halo_notify_silent_summary">조용한 알림을 수신하였을 시 알려줍니다.</string>
 
   <!-- Toast Animation -->
   <string name="toast_animation_title">토스트 애니메이션</string>
+
+  <!-- Custom notification panel header -->
+  <string name="custom_statusbar_header_title">상황에 맞는 알림 패널 헤더</string>
+  <string name="custom_statusbar_header_summary">알림 패널 헤더의 배경을 현재의 날짜와 시간에 기초한 이미지로 설정</string>
 </resources>
