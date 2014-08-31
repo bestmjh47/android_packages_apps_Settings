@@ -1052,4 +1052,103 @@
   <!-- Custom notification panel header -->
   <string name="custom_statusbar_header_title">상황에 맞는 알림 패널 헤더</string>
   <string name="custom_statusbar_header_summary">알림 패널 헤더의 배경을 현재의 날짜와 시간에 기초한 이미지로 설정</string>
+  
+  <!-- Lock before unlock -->
+  <string name="lock_before_unlock_title">보안 잠금 해제 전에 슬라이더를 보여줍니다</string>
+  <string name="lock_before_unlock_summary">보안 잠금 화면 이전에 잠금화면 고리 보여주기</string>
+  <!-- Lockscreen Notifications -->
+  <!-- Categories --> 
+  <string name="general">일반</string>
+  <string name="layout">레이아웃</string>
+  <string name="privacy">사생활</string>
+  <string name="lockscreen_notifications">잠금화면 알림</string>
+  <string name="lockscreen_notifications_summary">알림이 발생되면 잠금화면에 알림을 표시합니다.</string>
+  <string name="pocket_mode">주머니 모드</string>
+  <string name="pocket_mode_summary">기기가 주머니 밖으로 꺼내졌을 때 모든 알림을 보여줍니다. 장치를 주머니에 넣을 경우 다시 화면을 끕니다.</string>
+  <string name="show_always">항상 보여주기</string>
+  <string name="show_always_summary">알림이 생성되지 않았더라도 주머니에서 꺼낼 경우, 항상 화면을 켭니다</string>
+  <string name="hide_low_priority">우선 순위가 낮은 알림 숨기기</string>
+  <string name="hide_low_priority_summary">구글 날씨 알림과 같은 낮은 순위의 알림을 숨깁니다</string>
+  <string name="hide_non_clearable">제거할 수 없는 알림을 표시하지 않습니다</string>
+  <string name="hide_non_clearable_summary">제거 할 수 없는 모든 알림을 숨깁니다</string>
+  <string name="dismiss_all">모든 알림을 무시하는 것을 허용합니다</string>
+  <string name="dismiss_all_summary">제거 할 수 없는 알림의 경우에도 무시하는 것을 허용합니다. 당연히, 이러한 알림들은 잠금화면에서만 숨겨질 뿐, 알림 패널에는 그대로 남아있습니다.</string>
+  <string name="expanded_view">확장된 알림 보기</string>
+  <string name="expanded_view_summary">길게 누름으로써 일반과 확장 알림을 선택할 수 있게 합니다. 확장된 알림은 당신이 숨기고 싶어 할 개인적인 정보를 보여줄 수 있습니다.</string>
+  <string name="force_expanded_view">알림 강제 확장</string>
+  <string name="force_expanded_view_summary">알림을 확장하는 것을 기본값으로 설정합니다. 하지만, 여전히 일반 표시와 확장된 표시를 전환할 수 있습니다.</string>
+  <string name="wake_on_notification">알림 수신시 기기 깨우기</string>
+  <string name="wake_on_notification_summary">알림이 수신되었을 경우 기기를 깨웁니다.</string>
+  <string name="notifications_height">알림 갯수</string>
+  <string name="notifications_height_summary">한 번에 표시될 알림들의 갯수</string>
+  <string name="offset_top">화면 맨 위로 부터의 간격:</string>
+  <string name="privacy_mode">사생활 모드</string>
+  <string name="privacy_mode_summary">보여 지고 무시되는 것들로부터 알림들을 비활성화 합니다. 이렇게 하면, 오직 알림들의 아이콘들만 볼 수 있습니다.</string>
+  <string name="excluded_apps_title">제외될 애플리케이션</string>
+  <string name="excluded_apps_summary">제외된 애플리케이션들은 잠금화면 알림으로 표시되지 않습니다.</string>
+  <string name="notification_color">알림 배경 색상</string>  
+  <!-- Glowpad Torch -->
+  <string name="lockscreen_glowpad_torch_title">잠금화면 고리 전등</string>
+  <string name="lockscreen_glowpad_torch_summary">고리를 두 번 탭하고 꾹 누르고 있으면, 전등이 켜집니다</string>  
+  <!-- Lockscreen See Through -->
+  <string name="see_through_title">잠금화면 블러 효과</string>
+  <string name="see_through_summary">잠금화면 배경으로써 현재 작업중인 창을 흐릿하게 표시합니다. 이 작업을 실행하면, 사용자의 데이터 일부가 보일 수 있습니다.</string>
+  <string name="lockscreen_blur_radius_title">블러 효과 강도</string> 
+  <!-- Pie Control -->
+  <string name="pie_control_category">파이 컨트롤</string>
+  <string name="pie_control_title">파이 컨트롤</string>
+  <string name="pie_control_summary">파이 컨트롤 활성화</string>
+  <string name="pie_control_size">네비게이션 크기</string>
+  <string name="pie_control_trigger_positions">보이기 옵션</string>
+  <string name="pie_control_trigger_left">화면의 왼쪽을 누를시 보이기</string>
+  <string name="pie_control_trigger_bottom">화면의 아래를 누를시 보이기</string>
+  <string name="pie_control_trigger_right">화면의 오른쪽을 누를시 보이기</string>
+  <string name="pie_control_trigger_top">화면의 위를 누를시 보이기</string>
+  <string name="pie_control_trigger_top_summary">화면 위의 파이 컨트롤은 상태와 시간을 표기하지 않습니다.</string>
+  <string name="pie_button_style">버튼 스타일</string>
+  <string name="pie_button_color_title">버튼 색상</string>
+  <string name="pie_button_alpha_title">버튼 투명도</string>
+  <string name="pie_button_outline_color_title">버튼 바깥 색상</string>
+  <string name="pie_button_pressed_color_title">Button pressed color</string>
+  <string name="pie_button_long_pressed_color_title">Button long pressed color</string>
+  <string name="pie_button_pressed_alpha_title">Button pressed transparency</string>
+  <string name="pie_icon_style">Button icon style</string>
+  <string name="pie_icon_color_title">Button icon color</string>
+  <string name="pie_icon_color_mode_title">Button icon color mode</string>
+  <string name="pie_icon_color_mode_dialog_title">Colorize</string>
+  <string name="pie_icon_color_mode_summary">Change the button icon color mode</string>
+  <string name="pie_trigger_note_title">Note</string>
+  <string name="pie_trigger_note_summary">To avoid conflicts with status bar or navigation bar, the triggers on these edges are automatically turned off if one or both are available</string>
+  <string name="pie_background_color_title">Background color</string>
+  <string name="pie_snap_color_title">Snap point color</string>
+  <string name="pie_text_color_title">Text color</string>
+  <string name="pie_background_alpha_title">Background transparency</string>
+  <string name="pie_mirror_right_title">Mirror right pie</string>
+  <string name="pie_mirror_right_summary">Mirror right pie on the horizontal axis</string>
+  <string name="pie_style">Style and dimension</string>
+  <string name="pie_style_title">Style</string>
+  <string name="pie_dimens_title">Dimension</string>
+  <string name="pie_show_snap_title">Show snap points</string>
+  <string name="pie_show_snap_summary">Shows snap points to change the trigger edge dynamically</string>
+  <string name="pie_show_text_title">Show status and clock</string>
+  <string name="pie_show_text_summary">Shows phone status, time and date information</string>
+  <string name="pie_show_background_title">Show background</string>
+  <string name="pie_show_background_summary">Enable pie background screen</string>
+  <string name="pie_button">Buttons</string>
+  <string name="pie_button_second_layer">Buttons second layer</string>
+  <string name="pie_button_second_layer_summary">Change second layer buttons</string>
+  <string name="pie_button_style_summary">Change pie button style</string>
+  <string name="pie_style_reset_message">Reset style entries to default?</string>
+  <string name="pie_disable_ime_triggers_title">Reduce trigger size on keyboard</string>
+  <string name="pie_disable_ime_triggers_summary">Reduces left and right trigger size if keyboard is active</string>
+  <string name="title_pref_menu_display">Menu visibility</string>
+  <string name="summary_pref_menu_display">How and when do you want the menu buttons to appear?</string>
+  <string name="navigation_menu_default_jb_behavior">Show on request (default)</string>
+  <string name="navigation_menu_never_show">Never show</string>
+  <string name="navigation_menu_always_show">Always show</string>
+  <string name="default_string">기본 값</string>
+  <string name="reset_message">Reset all entries to default?</string>
+  <string name="shortcut_action_help_pie_second_layer_delete_last_entry">Removing every %1$s in the list will disable the second pie layer entirely.</string>
+  <string name="additional_options_title">추가 옵션</string>
+
 </resources>
